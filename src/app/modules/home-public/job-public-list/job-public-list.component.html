@@ -1,0 +1,35 @@
+<div class="d-flex mt-3 mb-5 container p-5">
+  <div class="col-2 md:col-4">
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+      <input type="text" pInputText placeholder="Tên công việc" [(ngModel)]="searchJob.name">
+    </div>
+  </div>
+  <div class="col-2 md:col-4">
+    <div class="p-inputgroup">
+      <input type="text" pInputText placeholder="Địa chỉ làm việc" [(ngModel)]="searchJob.addressWork">
+    </div>
+  </div>
+  <div class="col-2 md:col-4">
+    <div class="p-inputgroup">
+      <input type="text" pInputText placeholder="Kĩ năng làm việc" [(ngModel)]="searchJob.skills">
+    </div>
+  </div>
+
+  <div class="container w-25">
+    <h5>Salary: {{rangeValues[0] + ' - ' + rangeValues[1]}}</h5>
+    <p-slider [(ngModel)]="rangeValues" [range]="true" [max]="200" (onChange)="handleChangeSalary()"></p-slider>
+  </div>
+
+
+  <p-button class="mr-2" label="Search" icon="pi pi-search" iconPos="right" [loading]="" (onClick)="onSearch()"></p-button>
+  <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+</div>
+
+<ng-template [ngIf]="user">
+  <div class="d-flex flex-wrap container">
+    <ngx-job-public-title class="content-detail" *ngFor="let job of jobs" [job]="job"> </ngx-job-public-title>
+  </div>
+</ng-template>
+
+<p-paginator class="fixed-bottom mb-5" [rows]="2" [totalRecords]="totalRecords" [rowsPerPageOptions]="[3,6,9]" (onPageChange)="paginate($event)"></p-paginator>

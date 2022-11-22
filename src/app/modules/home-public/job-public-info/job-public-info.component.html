@@ -1,0 +1,32 @@
+<div class="content p-4">
+  <div class="container mt-5">
+    <div class="d-flex justify-content-between col-11">
+      <h2 class="text-white">TIN TUYỂN DỤNG, VIỆC LÀM TỐT NHẤT</h2>
+      <p class="text-white" style="cursor: pointer;" (click)="onReadAll()">>> Xem tất cả</p>
+    </div>
+
+    <div>
+      <div class="content-group mt-5">
+        <h3 class="text-primary"><i class="pi pi-star-fill text-primary"></i> Việc làm mới tuyển</h3>
+        <div class="d-flex flex-wrap">
+          <ngx-job-public-title class="content-detail" *ngFor="let job of jobNews" [job]="job" ></ngx-job-public-title>
+        </div>
+        <ng-template [ngIf]="totalPageJobNews>20"><p class="text-success">>> Xem thêm</p></ng-template>
+      </div>
+      <div class="content-group mt-5">
+        <h3 class="text-primary"> <i class="pi pi-star-fill text-primary" ></i> Việc làm tuyển gấp</h3>
+        <div class="d-flex flex-wrap ">
+          <ngx-job-public-title class="content-detail" *ngFor="let job of jobDues" [job]="job" ></ngx-job-public-title>
+        </div>
+        <ng-template [ngIf]="totalPageJobDues >20"><p class="text-success">>> Xem thêm</p></ng-template>
+      </div>
+      <div class="content-group mt-5">
+        <h3 class="text-primary"> <i class="pi pi-star-fill text-primary" ></i> Việc làm lương cao</h3>
+        <div class="d-flex flex-wrap">
+          <ngx-job-public-title class="content-detail" *ngFor="let job of jobHighSalaries" [job]="job" ></ngx-job-public-title>
+        </div>
+        <ng-template [ngIf]="totalPageJobHighSalary >20"><p class="text-success">>> Xem thêm</p></ng-template>
+      </div>
+    </div>
+  </div>
+</div>

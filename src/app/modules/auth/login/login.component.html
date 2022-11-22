@@ -1,0 +1,43 @@
+<form [formGroup]="formLogin">
+  <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-5">
+    <h2 class="container-fluid text-center ">Đăng Nhập</h2>
+  </div>
+
+  <div class="p-float-label mb-4">
+    <input class="custom-input" formControlName="userName" type="text" pInputText />
+    <label >Tên tài khoản</label>
+    <small class="col alert text-danger" role="alert"
+           *ngIf="formLogin.get('userName')?.errors?.required && formLogin.get('userName')?.touched">
+      Bạn phải điền tài khoản !
+    </small>
+  </div>
+
+  <div class="p-float-label mb-3">
+    <input class="custom-input" formControlName="password" type="password" pInputText />
+    <label >Mật khẩu</label>
+    <small class="col alert text-danger" role="alert"
+           *ngIf="formLogin.get('password')?.errors?.required && formLogin.get('password')?.touched">
+      Bạn phải điền mật khẩu !
+    </small>
+  </div>
+
+  <div class="text-danger">
+    <small class="col alert text-danger" role="alert"
+           *ngIf="formLogin.get('password')?.errors?.required && formLogin.get('password')?.touched">
+      Đăng nhập không thành công kiểm tra lại tài khoản, mật khẩu !
+    </small>
+  </div>
+
+  <div class="d-flex justify-content-between align-items-center mt-4">
+    <a class="text-body" style="cursor: pointer;" (click)="forgotPassword()">Quên mật khẩu.</a>
+  </div>
+
+  <div class="text-center text-lg-start mt-4 pt-2">
+    <button pButton type="button" label="Đăng nhập" (click)="onSubmit()" [disabled]=!this.formLogin.valid></button>
+
+    <p class="fw-bold mt-2 pt-1 mb-0 mt-4">
+      <span>Chưa có tài khoản ? </span>
+      <a class="linkDanger" style="cursor: pointer;"  (click)="register()" >Đăng ký</a>
+    </p>
+  </div>
+</form>

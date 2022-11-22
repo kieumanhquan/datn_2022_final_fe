@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-lg-start container bg-primary p-3 rounded mb-4" style="width: 400px">
+  <div class="ml-2 container text-white">
+    <div class="d-flex justify-content-lg-between">
+      <a (click)="onReadDetail(job.id)" style="cursor: pointer;" class="display-5 font-weight-bold text-white" >{{job.name}}</a>
+      <p class="badge">Ngày đăng: {{this.job.createDate | date}}</p>
+    </div>
+    <div class="d-flex justify-content-between">
+      <p class="badge mr-2">Số lượng tuyển: {{job.qtyPerson}} người</p>
+      <p class="badge mr-2">Người xem: {{job.views}}</p>
+      <p class="badge">Hạn tuyển: {{this.job.dueDate | date}}</p>
+    </div>
+    <div class="d-flex justify-content-between">
+      <p class="badge mr-2">Mức lương: {{job.salaryMin}}-{{job.salaryMax}} Triệu đồng</p>
+      <p class="badge mr-2">Địa chỉ: {{job.addressWork}}</p>
+      <p class="badge mr-2">Yêu cầu: {{job.skills}}</p>
+    </div>
+  </div>
+</div>

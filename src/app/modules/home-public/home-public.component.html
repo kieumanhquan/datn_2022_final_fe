@@ -1,0 +1,106 @@
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top">
+  <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+    <a href="home-public" class="logo d-flex align-items-center">
+      <img src="../../../assets/images/icon_itsol.png" alt="">
+      <span> ITSOL</span>
+    </a>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto active" href="home-public">Trang Chủ</a></li>
+        <li><a class="nav-link scrollto" href="/home-public/job">Tuyển Dụng</a></li>
+        <li><a class="nav-link scrollto" href="home-public">Giải Pháp AI</a></li>
+        <li><a class="nav-link scrollto" href="home-public">Bài Viết</a></li>
+        <li class="dropdown"><a href="home-public"><span>Dịch Vụ</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="home-public">Nhân sự và bố trí</a></li>
+            <li class="dropdown"><a href="home-public"><span>Gia công phần mềm CNTT</span> <i class="bi bi-chevron-right"></i></a>
+              <ul>
+                <li><a href="home-public">Tư vấn CNTT</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+<!--        <li><a class="getstarted scrollto" href="auth">Đăng Nhập</a></li>-->
+        <li class="row">
+          <ng-template [ngIf]="!user">
+            <button pButton pRipple type="button" (click)="onSignIn()" label="Đăng nhập" class=" p-button-success mr-3 ml-5"></button>
+            <button pButton pRipple type="button" (click)="onSignUp()" label="Đăng kí" ></button>
+          </ng-template>
+          <ng-template [ngIf]="user">
+            <ng-template [ngIf]="user.name">
+              <p-avatar [label]="user.name[0]"  styleClass="mr-3" shape="circle" class="ml-5 align-self-center"></p-avatar>
+            </ng-template>
+            <button pButton pRipple type="button" (click)="onEditInfo()" label="Cập nhật" class="mr-1"></button>
+            <ng-template [ngIf]="role()">
+              <button pButton pRipple type="button" (click)="onHomeAdmin()" label="Trang Quản lý" class="mr-1" ></button>
+            </ng-template>
+            <button pButton pRipple type="button" (click)="onLogOut()" label="Thoát"></button>
+          </ng-template>
+        </li>
+      </ul>
+<!--      <i class="pi pi-list mobile-nav-toggle"></i>-->
+    </nav><!-- .navbar -->
+  </div>
+</header><!-- End Header -->
+
+<div class="mt-5">
+  <router-outlet></router-outlet>
+</div>
+
+
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-info">
+          <img src="https://haymora.com/upload/images/cong_nghe_thong_tin/top_50/itsol/itsol-logo.jpg"
+               class="container-fluid img-fluid" alt="Itsol image">
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Liên Hệ</h4>
+          <ul>
+            <li><i class="bi bi-chevron-right"></i> <a href="home-public">Trang Chủ</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="home-public">Giới Thiệu</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="home-public">Giải Pháp AI</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="home-public">Dịch Vụ</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="home-public">Bài Viết</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Dịch Vụ Chúng Tôi</h4>
+          <ul>
+            <li><i class="bi bi-chevron-right"></i> <a href="home-public">Thiết Kế Web</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="home-public">Phát Triển Web</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="home-public">Giáo Dục</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="home-public">Ngân Hàng</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="home-public">Nhân Lực CNTT</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Liên Hệ Chúng Tôi</h4>
+          <p>Tòa 3A <br>
+            Duy Tân, Cầu Giấy<br>
+            Hà Nội, Việt Nam <br><br>
+            <strong>Điện Thoại:</strong> +84904290583<br>
+            <strong>Email:</strong> cuongdc@itsol.com<br>
+            <strong>Website:</strong> http://itsol.vn<br>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="credits">
+      Thiết kế bởi <a href="https://github.com/kieumanhquan">Kiều Mạnh Quân _ 1821050227 _ DCCTPM63A</a>
+    </div>
+  </div>
+</footer>

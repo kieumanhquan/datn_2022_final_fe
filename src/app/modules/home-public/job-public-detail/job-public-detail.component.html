@@ -1,0 +1,248 @@
+<div style="margin-top: 100px">
+</div>
+<ng-template [ngIf]="job">
+  <div class="container">
+    <ng-template [ngIf]="!jobRegister">
+      <p-button (click)="onBeforeApply('top')" label="Ứng tuyển ngay" styleClass="p-button-sm" class="">
+      </p-button>
+    </ng-template>
+
+    <ng-template [ngIf]="jobRegister">
+      <p-button (click)="displayPositionInput = true" label="Hủy ứng tuyển" styleClass="p-button-sm" class="mr-2">
+      </p-button>
+    </ng-template>
+
+    <p-dialog header="Ứng tuyển" [(visible)]="displayPosition" [position]="position" [modal]="true"
+              [style]="{width: '50vw'}" [baseZIndex]="10000"
+              [draggable]="false" [resizable]="false">
+
+      <form novalidate (ngSubmit)="onApply()" [formGroup]="info"
+            class="row justify-content-md-center container popup">
+        <div class="col-md-8 mb-5">
+          <div class="d-flex">
+            <label class="col-md-4 col-form-label">Tải cv:</label>
+            <div class="col-md-8">
+              <p-fileUpload mode="advanced" chooseLabel="Tải CV" (onSelect)="onSelected($event)" class="mr-2 upload-cv"
+                            [showUploadButton]="false" [showCancelButton]="false"></p-fileUpload>
+            </div>
+          </div>
+          <div class="d-flex">
+            <ng-template [ngIf]="!checkedProfile">
+              <label class="col-md-4 col-form-label">Tải avatar:</label>
+              <div class="col-md-8">
+                <p-fileUpload mode="advanced" chooseLabel="Ảnh đại diện" (onSelect)="onSelectedAvatar($event)"
+                              accept="image/*" [showUploadButton]="false" [showCancelButton]="false"></p-fileUpload>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label">Mô tả về bản thân:</label>
+            <div class="col-md-8">
+              <textarea pInputTextarea formControlName="description" [rows]="4" [cols]="43" autoResize="autoResize"
+                        [maxLength]="250"></textarea>
+            </div>
+          </div>
+          <ng-template [ngIf]="!checkedProfile">
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label">Quê quán:</label>
+              <div class="col-md-8">
+                <input class="form-control" type="text" formControlName="homeTown">
+              </div>
+            </div>
+            <div class="col alert alert-danger" role="alert"
+                 *ngIf="info.get('homeTown')?.errors?.required && info.get('homeTown')?.touched">
+              HomeTown is required!
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label">Giới tinh:</label>
+              <div class="col-md-8">
+                <select
+                  class="custom-select mb-3"
+                  formControlName="gender"
+                >
+                  <option *ngFor="let gender of genders" [ngValue]="gender">
+                    {{ gender }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col alert alert-danger" role="alert"
+                 *ngIf="info.get('gender')?.errors?.required && info.get('gender')?.touched">
+              Gender is required!
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label">Ngày tháng năm sinh:</label>
+              <div class="col-md-8">
+                <p-calendar [showIcon]="true" [maxDate]="currentDate" inputId="icon"
+                            formControlName="birthDay"></p-calendar>
+              </div>
+            </div>
+            <div class="col alert alert-danger" role="alert"
+                 *ngIf="info.get('birthDay')?.errors?.required && info.get('birthDay')?.touched">
+              BirthDay is required!
+            </div>
+
+            <div formArrayName="skills" *ngIf="skills.controls.length">
+              <div class="form-group row" *ngFor="let c of skills.controls; index as i">
+                <label class="col-md-4 col-form-label">Skills:</label>
+                <div class="col-md-8">
+                  <input class="form-control" type="tel" [formControlName]="i">
+                  <div class="text-right">
+                    <button type="button" class="btn btn-info" (click)="addSkill()">+</button>
+                    <button type="button" class="btn btn-danger" (click)="removeSkill(i)"
+                            *ngIf="skills.controls.length > 1">-
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label">Số năm kinh nghiệm:</label>
+              <div class="col-md-8">
+                <input class="form-control" type="number" [min]="0" formControlName="numberYearsExperience">
+              </div>
+            </div>
+            <div class="col alert alert-danger" role="alert"
+                 *ngIf="info.get('numberYearsExperience')?.errors?.required && info.get('numberYearsExperience')?.touched">
+              NumberYearsExperience is required!
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label">Trình độ học vấn:</label>
+              <div class="col-md-8">
+                <select
+                  class="custom-select mb-3"
+                  formControlName="academicLevel"
+                >
+                  <option *ngFor="let academicLevel of academicLevels" [ngValue]="academicLevel">
+                    {{ academicLevel.code }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col alert alert-danger" role="alert"
+                 *ngIf="info.get('academicLevel')?.errors?.required && info.get('academicLevel')?.touched">
+              AcademicLevelId is required!
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label">Mức lương mong muốn:</label>
+              <div class="col-md-8">
+                <input class="form-control" type="number" [min]="0" formControlName="desiredSalary">
+              </div>
+            </div>
+            <div class="col alert alert-danger" role="alert"
+                 *ngIf="info.get('desiredSalary')?.errors?.required && info.get('desiredSalary')?.touched">
+              NumberYearsExperience is required!
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label">Địa chỉ làm việc mong muốn:</label>
+              <div class="col-md-8">
+                <input class="form-control" type="text" formControlName="desiredWorkingAddress">
+              </div>
+            </div>
+            <div class="col alert alert-danger" role="alert"
+                 *ngIf="info.get('desiredWorkingAddress')?.errors?.required && info.get('desiredWorkingAddress')?.touched">
+              DesiredWorkingAddress is required!
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label">Hình thức làm việc:</label>
+              <div class="col-md-8">
+                <select
+                  class="custom-select mb-3"
+                  formControlName="workingForm"
+                >
+                  <option *ngFor="let workingForm of workingForms" [ngValue]="workingForm">
+                    {{ workingForm.code }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </ng-template>
+
+        </div>
+      </form>
+      <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="onApply()" label="Yes" class="p-button-text"
+                  [disabled]="!checkApply()"></p-button>
+        <p-button icon="pi pi-times" (click)="displayPosition=false" label="No" class="ml-2"></p-button>
+      </ng-template>
+    </p-dialog>
+
+    <div class="d-flex mt-5">
+      <div class="mb-4">
+        <h2 class="display-5 font-weight-bold">{{job.name}}</h2>
+        <p class="mt-3">Hạn nộp hồ sơ: {{this.job.dueDate | date}}</p>
+      </div>
+    </div>
+    <h2>Thông tin chung</h2>
+    <div class="d-flex justify-content-around badge badge-primary mr-2 p-5">
+      <div>
+        <div>
+          <h2 class="text-white">Mức lương</h2>
+          <p class="text-white">{{job.salaryMin}}-{{job.salaryMax}} Triệu đồng</p>
+        </div>
+        <div>
+          <h2 class="text-white">Hình thức làm việc</h2>
+          <p class="text-white">{{job.workingForm.code}}</p>
+        </div>
+        <div>
+          <h2 class="text-white">Trình độ học vấn</h2>
+          <p class="text-white">{{job.academicLevel.code}}</p>
+        </div>
+      </div>
+      <div class="ml-5">
+        <div>
+          <h2 class="text-white">Số lượng tuyển</h2>
+          <p class="text-white">{{job.qtyPerson}} người</p>
+        </div>
+        <div>
+          <h2 class="text-white">Vị trí ứng tuyển</h2>
+          <p class="text-white">{{job.jobPosition.code}}</p>
+        </div>
+        <div>
+          <h2 class="text-white">Kinh nghiệm </h2>
+          <p class="text-white">{{job.numberExperience}}</p>
+        </div>
+      </div>
+    </div>
+    <h2>Địa điểm làm việc</h2>
+    <div class="badge badge-primary mr-2 p-5 container">
+      <div>
+        <p class="text-white">{{job.addressWork}}</p>
+      </div>
+    </div>
+    <h2>Mô tả công việc</h2>
+    <div class="badge badge-primary mr-2 p-5 container">
+      <div>
+        <p class="text-white">{{job.description}}</p>
+      </div>
+    </div>
+    <h2>Quyền lợi</h2>
+    <div class="badge badge-primary mr-2 p-5 container">
+      <div>
+        <p class="text-white">{{job.benefits}}</p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<p-dialog header="Nhập lý do" [(visible)]="displayPositionInput" [position]="'top'" [modal]="true"
+          [style]="{width: '50vw'}" [baseZIndex]="10000"
+          [draggable]="false" [resizable]="false">
+  <div class="container text-center">
+    <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="reasonDto.reason"></textarea>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button icon="pi pi-check" type="submit" (click)="onCancel()" label="Yes" class="p-button-text"></p-button>
+    <p-button icon="pi pi-times" (click)="displayPositionInput = false" label="No" class="ml-2"></p-button>
+  </ng-template>
+</p-dialog>

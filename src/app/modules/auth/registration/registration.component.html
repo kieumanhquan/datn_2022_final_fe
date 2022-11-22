@@ -1,0 +1,84 @@
+<form novalidate (ngSubmit)="onSubmit()" [formGroup]="regi">
+  <div class="container-fluid text-center" >
+    <h1 class="lead fw-normal mb-5 me-3">Đăng ký</h1>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-4 col-form-label">Tên tài khoản:</label>
+
+    <div class="col-md-8">
+      <input class="form-control" type="text" formControlName="userName">
+      <small class="col alert text-danger" role="alert"
+             *ngIf="regi.get('userName')?.errors?.required && regi.get('userName')?.touched">
+        Bạn cần nhập tên tài khoản !
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-4 col-form-label">Mật khẩu :</label>
+    <div class="col-md-8">
+      <input class="form-control" type="password" formControlName="password">
+      <small class="col alert text-danger" role="alert"
+             *ngIf="regi.get('password')?.errors?.required && regi.get('password')?.touched">
+        Bạn cần nhập mật khẩu !
+      </small>
+      <small class="col alert text-danger" role="alert"
+             *ngIf="regi.get('password')?.errors?.pattern && regi.get('password')?.touched">
+        Mật khẩu có 8 ký tự trở lên, bao gồm cả chữ, cả số và cả kí tự đặc biệt !
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-4 col-form-label">Họ và tên:</label>
+    <div class="col-md-8">
+      <input class="form-control" type="text" formControlName="name">
+      <small class="col alert text-danger" role="alert"
+             *ngIf="regi.get('name')?.errors?.required && regi.get('name')?.touched">
+        Bạn cần nhập họ và tên !
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-4 col-form-label">Email</label>
+    <div class="col-md-8">
+      <input class="form-control" type="text" formControlName="email">
+      <small class="col alert text-danger" role="alert"
+             *ngIf="regi.get('email')?.errors?.required && regi.get('email')?.touched">
+        Bạn cần nhập email !
+      </small>
+      <small class="col alert text-danger" role="alert"
+             *ngIf="regi.get('email')?.errors?.email && regi.get('email')?.touched">
+        Bạn cần nhập đúng định dạng của email !
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-4 col-form-label">Số điện thoại</label>
+    <div class="col-md-8">
+      <input class="form-control" type="text" formControlName="phoneNumber">
+      <small class="col alert text-danger" role="alert"
+             *ngIf="regi.get('phoneNumber')?.errors?.required && regi.get('phoneNumber')?.touched">
+        Bạn cần nhập số điện thoại !
+      </small>
+      <small class="col alert text-danger" role="alert"
+             *ngIf="regi.get('phoneNumber')?.errors?.pattern && regi.get('phoneNumber')?.touched">
+        Bạn cần nhập dung định dạng số điện thoại !
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row mt-4">
+    <div class="col-md-12 text-center">
+      <button class="btn btn-primary mt-3" type="submit"  [disabled]=!this.regi.valid>Đăng ký</button>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between align-items-center mt-4">
+    <a class="text-body" style="cursor: pointer; text-decoration: none;" (click)="login()">Quay lại trang đăng nhập.</a>
+  </div>
+</form>
+
