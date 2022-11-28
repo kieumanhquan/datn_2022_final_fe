@@ -5,8 +5,7 @@ import {User} from '../../../../models/model/User';
 import {HttpErrorResponse} from '@angular/common/http';
 import {UserService} from '../../../../service/user.service';
 import {Profiles} from '../../../../models/model/Profiles';
-
-
+// import {Role} from '../../../../models/model/Role';
 
 @Component({
   selector: 'ngx-user-details',
@@ -15,6 +14,7 @@ import {Profiles} from '../../../../models/model/Profiles';
 })
 export class UserDetailsComponent implements OnInit {
    user: User;
+   // role: Role;
   userId: number;
   profiles: Profiles;
 

@@ -50,6 +50,37 @@
     </div>
   </div>
 </div>
+
+<!--<ng-container *ngFor="let job of jobs">-->
+<!--  <tr>-->
+<!--    <td>{{job.id}}</td>-->
+<!--    <td><a class="text-decoration-none">{{job.name}}</a></td>-->
+<!--    <td>{{job.addressWork}}</td>-->
+<!--    <td>{{job.salaryMin}}</td>-->
+<!--    <td>{{job.dueDate | date}}</td>-->
+<!--    <td>{{job.statusJob.code}}</td>-->
+<!--    <td>#</td>-->
+<!--    <td>-->
+<!--      <p-button label="Export JD" icon="pi pi-file-pdf" (click)="exportPdf()" pTooltip="PDF" tooltipPosition="bottom" styleClass="p-button-sm" class="mr-2"></p-button>-->
+
+<!--      <ng-template-->
+<!--        [ngIf]="(user.roles[0].id === 1 || user.roles[0].id === 2) && (job.statusJob.id === 3 || job.statusJob.id === 2)">-->
+<!--        <p-button label="Xem trước" (click)="onPreview(job.id)" styleClass="p-button-sm" class="mr-2"></p-button>-->
+<!--      </ng-template>-->
+
+<!--      <ng-template [ngIf]="job.statusJob.id === 5">-->
+<!--        <p-button (click)="displayPositionReason = true" label="Xem lý do" styleClass="p-button-sm"-->
+<!--                  class="mr-2"></p-button>-->
+<!--      </ng-template>-->
+
+<!--      <ng-template-->
+<!--        [ngIf]="job.statusJob.id === 3 && (user.roles[0].id === 1 || user.roles[0].id === 2) ">-->
+<!--        <p-button label="Đăng tuyển" (click)="onUp()" styleClass="p-button-sm"></p-button>-->
+<!--      </ng-template>-->
+<!--    </td>-->
+<!--  </tr>-->
+<!--</ng-container>-->
+
 <ngx-popup-reason [displayPosition]="displayPositionReason" (checkedChange)="displayPositionReason = $event"
                   [content]="this.job.reason">
 </ngx-popup-reason>

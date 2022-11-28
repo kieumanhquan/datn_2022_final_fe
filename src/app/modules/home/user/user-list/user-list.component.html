@@ -1,15 +1,15 @@
 <div class="mt-2 mb-5">
   <div class="row col-md-12">
     <div class="col-md-4">
-      <p-autoComplete [style]="{'minWidth':'100%'}" [(ngModel)]="selectedUserName" placeholder="Tên người đăng tuyển" field="userName" ></p-autoComplete>
+      <p-autoComplete [size]="44" [(ngModel)]="selectedUserName" placeholder="Tên người đăng tuyển" field="userName" ></p-autoComplete>
     </div>
 
     <div class="col-md-4">
-      <p-autoComplete [style]="{'minWidth':'100%'}" [(ngModel)]="selectedEmail" placeholder="Email" field="email"></p-autoComplete>
+      <p-autoComplete [size]="44" [(ngModel)]="selectedEmail" placeholder="Email" field="email"></p-autoComplete>
     </div>
 
     <div class="col-md-4">
-      <p-autoComplete [style]="{'minWidth':'100%'}" [(ngModel)]="selectedPhoneNumber" placeholder="Số điện thoại" field="phoneNumber"></p-autoComplete>
+      <p-autoComplete [size]="44" [(ngModel)]="selectedPhoneNumber" placeholder="Số điện thoại" field="phoneNumber"></p-autoComplete>
     </div>
   </div>
 
@@ -26,6 +26,12 @@
   </div>
 </div>
 
-<ngx-user-title *ngFor="let user of users" [user]="user"></ngx-user-title>
+<div class="row float-left ml-5 mr-5 w-100">
+  <ngx-user-title *ngFor="let user of users" [user]="user"></ngx-user-title>
+</div>
 
-<p-paginator [rows]="2" [totalRecords]="totalRecords" [rowsPerPageOptions]="[2,5,10]" (onPageChange)="paginate($event)"></p-paginator>
+<p-paginator [rows]="5" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5,10,15]" (onPageChange)="paginate($event)"></p-paginator>
+
+
+
+

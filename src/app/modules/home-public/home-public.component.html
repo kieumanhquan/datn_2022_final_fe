@@ -33,11 +33,11 @@
             <ng-template [ngIf]="user.name">
               <p-avatar [label]="user.name[0]"  styleClass="mr-3" shape="circle" class="ml-5 align-self-center"></p-avatar>
             </ng-template>
-            <button pButton pRipple type="button" (click)="onEditInfo()" label="Cập nhật" class="mr-1"></button>
+            <button pButton pRipple type="button" (click)="onEditInfo()" label="Cập Nhật" class="mr-1"></button>
             <ng-template [ngIf]="role()">
-              <button pButton pRipple type="button" (click)="onHomeAdmin()" label="Trang Quản lý" class="mr-1" ></button>
+              <button pButton pRipple type="button" (click)="onHomeAdmin()" label="Quản Lý" class="mr-1"></button>
             </ng-template>
-            <button pButton pRipple type="button" (click)="onLogOut()" label="Thoát"></button>
+            <button pButton pRipple type="button" (click)="onLogOut()" label="Đăng Xuất"></button>
           </ng-template>
         </li>
       </ul>

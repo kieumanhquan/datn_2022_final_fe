@@ -28,7 +28,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     group: true,
   },
   {
-    title: 'Quản lý công việc',
+    title: 'Quản lý tin tuyển dụng',
     icon: 'browser-outline',
     link: '/home/list-job',
   },

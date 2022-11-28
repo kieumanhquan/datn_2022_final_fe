@@ -1,7 +1,7 @@
-<div class=" container mt-2 mb-2">
+<div class=" container mt-1 mb-1">
   <div class="row container">
     <div class="col-md-4">
-        <div class="p-inputgroup ">
+        <div class="p-inputgroup">
           <input class="col-md-10" type="text" pInputText placeholder="Tên công việc" [(ngModel)]="searchJob.name">
           <span class="p-inputgroup-addon col-md-2"><i class="pi pi-user"></i></span>
         </div>
@@ -25,7 +25,7 @@
     </div>
   </div>
 
-  <div class="row d-flex container mt-5">
+  <div class="row d-flex container mt-3">
     <div class="col-md-4">
         <div class="p-inputgroup">
           <input type="text" pInputText placeholder="Kĩ năng làm việc" [(ngModel)]="searchJob.skills">
@@ -44,7 +44,7 @@
     </div>
   </div>
 
-  <div class="container-fluid row mt-5 mb-5">
+  <div class="container-fluid row mt-3 mb-5">
     <div class="col-md-9">
       <p-button class="col-md-4 float-right" [style]="{'minWidth':'100%'}" label="Tìm Kiếm" icon="pi pi-search" iconPos="right" [loading]="" (onClick)="onSearch()"></p-button>
     </div>
@@ -55,8 +55,59 @@
   </div>
 </div>
 
-<ng-template [ngIf]="user">
-  <ngx-job-title *ngFor="let job of jobs" [job]="job" [user]="user"></ngx-job-title>
-</ng-template>
+
+
+<!--<table class="table text-center">-->
+<!--  <thead class="thead-dark">-->
+<!--  <tr>-->
+<!--    <th scope="col">STT</th>-->
+<!--    <th scope="col">Tên Công Việc</th>-->
+<!--    <th scope="col">Vị Trí Công Việc</th>-->
+<!--    <th scope="col">Mức Lương Đề Xuất</th>-->
+<!--    <th scope="col">Hạn Nộp Hồ Sơ</th>-->
+<!--    <th scope="col">Trạng Thái</th>-->
+<!--    <th scope="col">Thống Kê</th>-->
+<!--    <th>Chức Năng</th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+
+<!--  <tr>-->
+    <ng-template [ngIf]="user">
+      <ngx-job-title *ngFor="let job of jobs" [job]="job" [user]="user"></ngx-job-title>
+    </ng-template>
+<!--  </tr>-->
+
+<!--  <ng-container *ngFor="let job of jobs">-->
+<!--    <tr>-->
+<!--      <td>{{job.id}}</td>-->
+<!--      <td><a class="text-decoration-none">{{job.name}}</a></td>-->
+<!--      <td>{{job.addressWork}}</td>-->
+<!--      <td>{{job.salaryMin}}</td>-->
+<!--      <td>{{job.dueDate | date}}</td>-->
+<!--      <td>{{job.statusJob.code}}</td>-->
+<!--      <td>#</td>-->
+<!--      <td>-->
+<!--        <p-button label="Export JD" icon="pi pi-file-pdf" (click)="exportPdf()" pTooltip="PDF" tooltipPosition="bottom" styleClass="p-button-sm" class="mr-2"></p-button>-->
+
+<!--        <ng-template-->
+<!--          [ngIf]="(user.roles[0].id === 1 || user.roles[0].id === 2) && (job.statusJob.id === 3 || job.statusJob.id === 2)">-->
+<!--          <p-button label="Xem trước" (click)="onPreview(job.id)" styleClass="p-button-sm" class="mr-2"></p-button>-->
+<!--        </ng-template>-->
+
+<!--        <ng-template [ngIf]="job.statusJob.id === 5">-->
+<!--          <p-button (click)="displayPositionReason = true" label="Xem lý do" styleClass="p-button-sm"-->
+<!--                    class="mr-2"></p-button>-->
+<!--        </ng-template>-->
+
+<!--        <ng-template-->
+<!--          [ngIf]="job.statusJob.id === 3 && (user.roles[0].id === 1 || user.roles[0].id === 2) ">-->
+<!--          <p-button label="Đăng tuyển" (click)="onUp()" styleClass="p-button-sm"></p-button>-->
+<!--        </ng-template>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--  </ng-container>-->
+
+
+<!--</table>-->
 
 <p-paginator [rows]="2" [totalRecords]="totalRecords" [rowsPerPageOptions]="[2,5,10]" (onPageChange)="paginate($event)"></p-paginator>

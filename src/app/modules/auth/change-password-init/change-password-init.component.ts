@@ -32,7 +32,7 @@ export class ChangePasswordInitComponent implements OnInit {
     this.authService.sendOtp(this.cpi.value).subscribe(
       (data: any) => {
         // alert('init-2'+ data.message);
-        alert('123');
+        alert('Người dùng vào Email để lấy mã OTP');
         if(data.obj===true){
           this.router.navigate(['/auth/change-password/finish']).then(r => console.log(r));
         }
