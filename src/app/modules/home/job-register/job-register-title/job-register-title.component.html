@@ -1,45 +1,48 @@
-<div class="d-flex justify-content-lg-start container bg-info p-3 rounded mb-4">
-  <p-avatar class="ml-2" [image]="this.avatar" size="xlarge"></p-avatar>
+<div class="ml-5">
+  <div class="d-flex justify-content-lg-start container bg-info p-3 rounded mb-4">
+    <p-avatar class="ml-2" [image]="this.avatar" size="xlarge"></p-avatar>
 
-  <div class="ml-4">
-    <div class="d-flex justify-content-lg-between">
-      <a (click)="onReadDetail(jobRegister.id)" style="cursor: pointer;" class="display-5 font-weight-bold mr-5">
-        {{jobRegister.user.name}}
-      </a>
+    <div class="ml-4">
+      <div class="d-flex justify-content-lg-between">
+        <a (click)="onReadDetail(jobRegister.id)" style="cursor: pointer;" class="display-5 font-weight-bold mr-5">
+          {{jobRegister.user.name}}
+        </a>
 
-      <p class="badge badge-secondary mr-2">
-        {{this.jobRegister.dateRegister| date}}
-      </p>
-    </div>
+        <p class="badge badge-secondary mr-2">
+          {{this.jobRegister.dateRegister| date}}
+        </p>
+      </div>
 
-    <div class="d-flex mt-2 justify-content-between">
-      <p class="badge badge-secondary mr-2" style="cursor: pointer;" (click)="onReadJobDetail(jobRegister.job.id)">
-        {{jobRegister.job.name}}
-      </p>
+      <div class="d-flex mt-2 justify-content-between">
+        <p class="badge badge-secondary mr-2" style="cursor: pointer;" (click)="onReadJobDetail(jobRegister.job.id)">
+          {{jobRegister.job.name}}
+        </p>
 
-      <p class="badge badge-secondary mr-2" style="cursor: pointer;" (click)="onReadJobDetail(jobRegister.job.id)">
-        {{jobRegister.job.jobPosition.code}}
-      </p>
+        <p class="badge badge-secondary mr-2" style="cursor: pointer;" (click)="onReadJobDetail(jobRegister.job.id)">
+          {{jobRegister.job.jobPosition.code}}
+        </p>
 
-      <p class="badge badge-secondary mr-2">
-        {{this.jobRegister.statusJobRegister.code}}
-      </p>
-    </div>
+        <p class="badge badge-secondary mr-2">
+          {{this.jobRegister.statusJobRegister.code}}
+        </p>
+      </div>
 
-    <div>
-      <p-button label="Tải xuống CV" (click)="onDownloadCV(jobRegister.id)" styleClass="p-button-sm" class="mr-2"></p-button>
+      <div>
+        <p-button label="Tải xuống CV" (click)="onDownloadCV(jobRegister.id)" styleClass="p-button-sm" class="mr-2"></p-button>
 
-      <ng-template [ngIf]="jobRegister.statusJobRegister.id === 5 || jobRegister.statusJobRegister.id === 6">
-        <p-button (click)="showPositionDialogReason()" label="Xem lý do" styleClass="p-button-sm"
-                  class="mr-2"></p-button>
-      </ng-template>
+        <ng-template [ngIf]="jobRegister.statusJobRegister.id === 5 || jobRegister.statusJobRegister.id === 6">
+          <p-button (click)="showPositionDialogReason()" label="Xem lý do" styleClass="p-button-sm"
+                    class="mr-2"></p-button>
+        </ng-template>
 
-      <ng-template [ngIf]="jobRegister.statusJobRegister.id === 2">
-        <p-button label="Đặt lịch phỏng vấn" (click)="showPositionDialog('top')" styleClass="p-button-sm"></p-button>
-      </ng-template>
+        <ng-template [ngIf]="jobRegister.statusJobRegister.id === 2">
+          <p-button label="Đặt lịch phỏng vấn" (click)="showPositionDialog('top')" styleClass="p-button-sm"></p-button>
+        </ng-template>
+      </div>
     </div>
   </div>
 </div>
+
 
 <ngx-popup-reason [displayPosition]="displayPositionReason" (checkedChange)="close($event)" [content]="this.jobRegister.reason"></ngx-popup-reason>
 

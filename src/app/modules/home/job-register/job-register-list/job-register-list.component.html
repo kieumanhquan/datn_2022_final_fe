@@ -32,7 +32,10 @@
   </div>
 </div>
 
-<ngx-job-register-title *ngFor="let jobRegister of jobRegisters" [jobRegister]="jobRegister"></ngx-job-register-title>
+<div class="row container ml-5">
+  <ngx-job-register-title *ngFor="let jobRegister of jobRegisters" [jobRegister]="jobRegister"></ngx-job-register-title>
+</div>
+
 
 <p-paginator [rows]="2" [totalRecords]="totalRecords" [rowsPerPageOptions]="[2,5,10]" (onPageChange)="paginate($event)"></p-paginator>
 

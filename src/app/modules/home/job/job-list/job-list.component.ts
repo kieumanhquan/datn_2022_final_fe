@@ -58,7 +58,7 @@ export class JobListComponent implements OnInit {
     this.selectedStatusJobAdvanced = {id: 1, code:'Chờ xét duyệt'};
     this.searchJob = {name:'',statusId:1,salaryMin:0,salaryMax:200,addressWork:'',skills:''};
     this.page = 0;
-    this.size = 2;
+    this.size =2;
     this.totalRecords = 5;
     this.sortNumber = 1;
   }
