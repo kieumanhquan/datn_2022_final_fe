@@ -1,12 +1,29 @@
 <h1 class="container-fluid text-center"> Tạo Công Việc Mới</h1>
-<form novalidate (ngSubmit)="onSubmit()" [formGroup]="rfContact" class="row justify-content-md-center container">
+<!-- <form novalidate (ngSubmit)="onSubmit()" [formGroup]="rfContact" class="row justify-content-md-center container"> -->
+<form (ngSubmit)="onSubmit()" [formGroup]="rfContact" class="row justify-content-md-center container">
   <div class="form-row">
     <div class="form-group col-md-12">
       <label for="example-text-input" class="col-form-label">Tên công việc :</label>
-      <input class="form-control" type="text" formControlName="name" placeholder="Nhập tên công việc">
-      <small class="col alert text-danger" role="alert"
-           *ngIf="rfContact.get('name')?.errors?.required && rfContact.get('name')?.touched">
+      <input class="form-control" type="text" formControlName="name" placeholder="Nhập tên công việc" ngxTrim>
+      <!-- <small class="col alert text-danger" role="alert"
+        *ngIf="rfContact.get('name')?.errors?.required && rfContact.get('name')?.touched">
         Nhập tên công việc là bắt buộc !
+      </small> -->
+      <small class="col alert text-danger" role="alert"
+        *ngIf="rfContact.get('name')?.errors?.required && (rfContact.get('name')?.dirty || rfContact.get('name')?.touched)">
+        Nhập tên công việc là bắt buộc !
+      </small>
+      <small class="col alert text-danger" role="alert"
+        *ngIf="rfContact.get('name')?.errors?.minlength && (rfContact.get('name')?.dirty || rfContact.get('name')?.touched)">
+        Tên công việc không được nhỏ hơn 3 kí tự !
+      </small>
+      <small class="col alert text-danger" role="alert"
+        *ngIf="rfContact.get('name')?.errors?.maxlength && (rfContact.get('name')?.dirty || rfContact.get('name')?.touched)">
+        Tên công việc không được lớn hơn 150 kí tự !
+      </small>
+      <small class="col alert text-danger" role="alert"
+        *ngIf="rfContact.get('name')?.errors?.pattern && (rfContact.get('name')?.dirty || rfContact.get('name')?.touched)">
+        Tên công việc không được chứa kí tự đặc biệt !
       </small>
     </div>
 
@@ -19,7 +36,7 @@
         </option>
       </select>
       <small class="col alert text-danger" role="alert"
-             *ngIf="rfContact.get('jobPositionId')?.errors?.required && rfContact.get('jobPositionId')?.touched">
+        *ngIf="rfContact.get('jobPositionId')?.errors?.required && rfContact.get('jobPositionId')?.touched">
         Chọn vị trí công việc là bắt buộc !
       </small>
     </div>
@@ -33,25 +50,39 @@
         </option>
       </select>
       <small class="col alert text-danger" role="alert"
-             *ngIf="rfContact.get('workingFormId')?.errors?.required && rfContact.get('workingFormId')?.touched">
+        *ngIf="rfContact.get('workingFormId')?.errors?.required && rfContact.get('workingFormId')?.touched">
         Chọn hình thức công việc là bắt buộc !
       </small>
     </div>
 
     <div class="form-group col-md-3">
       <label for="example-text-input" class="col-form-label">Lương tối thiểu :</label>
-      <input class="form-control" type="number" [min]="0" formControlName="salaryMin" placeholder="Nhập lương tối thiểu">
+      <input class="form-control" type="number" [min]="0" formControlName="salaryMin"
+        placeholder="Nhập lương tối thiểu">
       <small class="col alert text-danger" role="alert"
-             *ngIf="rfContact.get('salaryMin')?.errors?.required && rfContact.get('salaryMin')?.touched">
+        *ngIf="rfContact.get('salaryMin')?.errors?.required && rfContact.get('salaryMin')?.touched">
         Nhập lương tối thiểu là bắt buộc !
+      </small>
+      <small class="col alert text-danger" role="alert"
+        *ngIf="rfContact.get('salaryMin')?.errors?.min && (rfContact.get('salaryMin')?.dirty || rfContact.get('salaryMin')?.touched)">
+        Lương tối thiểu khổng được nhỏ hơn 0 !
+      </small>
+      <small class="col alert text-danger" role="alert"
+      *ngIf="rfContact.get('salaryMin')?.errors?.max && (rfContact.get('salaryMin')?.dirty || rfContact.get('salaryMin')?.touched)">
+      Lương tối da khổng được lon hơn 200 !
+    </small>
+      <small class="col alert text-danger" role="alert"
+        *ngIf="rfContact.get('salaryMin')?.errors?.salaryMinMaxCustomValidator && (rfContact.get('salaryMin')?.dirty || rfContact.get('salaryMin')?.touched)">
+        Lương tối đa phải lơn hơn lương tối thiểu
       </small>
     </div>
 
     <div class="form-group col-md-3">
       <label for="example-text-input" class="col-form-label">Lương tối đa :</label>
-      <input class="form-control" type="number" [min]="this.rfContact.value.salaryMin" formControlName="salaryMax" placeholder="Nhập lương tối đa">
+      <input class="form-control" type="number" [min]="this.rfContact.value.salaryMin" formControlName="salaryMax"
+        placeholder="Nhập lương tối đa">
       <small class="col alert text-danger" role="alert"
-             *ngIf="rfContact.get('salaryMax')?.errors?.required && rfContact.get('salaryMax')?.touched">
+        *ngIf="rfContact.get('salaryMax')?.errors?.required && rfContact.get('salaryMax')?.touched">
         Nhập lương tối đa là bắt buộc !
       </small>
     </div>
@@ -60,41 +91,49 @@
       <label for="example-text-input" class="col-form-label">Địa chỉ công việc :</label>
       <input class="form-control" type="text" formControlName="addressWork" placeholder="Nhập địa chỉ công việc">
       <small class="col alert text-danger" role="alert"
-           *ngIf="rfContact.get('addressWork')?.errors?.required && rfContact.get('addressWork')?.touched">
+        *ngIf="rfContact.get('addressWork')?.errors?.required && rfContact.get('addressWork')?.touched">
         Nhập địa chỉ công việc là bắt buộc !
       </small>
     </div>
 
     <div class="form-group col-md-12">
       <label for="example-text-input" class="col-form-label">Mô tả công việc :</label>
-      <textarea class="col-md-12" pInputTextarea formControlName="description"
-                [rows]="3" [cols]="80"
-                autoResize="autoResize" [maxLength]="250"
-                placeholder="Nhập mô tả công việc">
+      <textarea class="col-md-12" pInputTextarea formControlName="description" [rows]="3" [cols]="80"
+        autoResize="autoResize" [maxLength]="250" placeholder="Nhập mô tả công việc">
 
       </textarea>
       <small class="col alert text-danger" role="alert"
-           *ngIf="rfContact.get('description')?.errors?.required && rfContact.get('description')?.touched">
+        *ngIf="rfContact.get('description')?.errors?.required && rfContact.get('description')?.touched">
         Nhập mô tả công việc là bắt buộc !
       </small>
     </div>
 
     <div class="form-group col-md-3">
       <label for="example-text-input" class="col-form-label">Kinh nghiệm :</label>
-      <input class="form-control" type="number" min="0" id="example-text-input" formControlName="numberExperience" placeholder="Nhập số năm kinh nghiệm">
+      <input class="form-control" type="number" min="0" id="example-text-input" formControlName="numberExperience"
+        placeholder="Nhập số năm kinh nghiệm">
       <small class="col alert text-danger" role="alert"
-           *ngIf="rfContact.get('numberExperience')?.errors?.required && rfContact.get('numberExperience')?.touched">
+        *ngIf="rfContact.get('numberExperience')?.errors?.required && rfContact.get('numberExperience')?.touched">
         Nhập kinh nghiệm là bắt buộc !
       </small>
+      <small class="col alert text-danger" role="alert"
+      *ngIf="rfContact.get('numberExperience')?.errors?.min && rfContact.get('numberExperience')?.touched">
+      Nhập kinh nghiệm không được nhỏ hơn 0 !
+    </small>
     </div>
 
     <div class="form-group col-md-3">
       <label for="example-text-input" class="col-form-label">Số lượng cần tuyển :</label>
-      <input class="form-control" type="number" min="0" formControlName="qtyPerson" placeholder="Nhập sô lượng cần tuyển">
+      <input class="form-control" type="number" min="0" formControlName="qtyPerson"
+        placeholder="Nhập sô lượng cần tuyển">
       <small class="col alert text-danger" role="alert"
-           *ngIf="rfContact.get('qtyPerson')?.errors?.required && rfContact.get('qtyPerson')?.touched">
+        *ngIf="rfContact.get('qtyPerson')?.errors?.required && rfContact.get('qtyPerson')?.touched">
         Nhập số lượng cần tuyển là bắt buộc !
       </small>
+      <small class="col alert text-danger" role="alert"
+      *ngIf="rfContact.get('qtyPerson')?.errors?.min && rfContact.get('qtyPerson')?.touched">
+      Nhập số lượng cần tuyển không được nhỏ hơn 0 !
+    </small>
     </div>
 
     <div class="form-group col-md-3">
@@ -106,7 +145,7 @@
         </option>
       </select>
       <small class="col alert text-danger" role="alert"
-             *ngIf="rfContact.get('academicLevelId')?.errors?.required && rfContact.get('academicLevelId')?.touched">
+        *ngIf="rfContact.get('academicLevelId')?.errors?.required && rfContact.get('academicLevelId')?.touched">
         Chọn trình độ học vấn là bắt buộc !
       </small>
     </div>
@@ -120,7 +159,7 @@
         </option>
       </select>
       <small class="col alert text-danger" role="alert"
-           *ngIf="rfContact.get('rankId')?.errors?.required && rfContact.get('rankId')?.touched">
+        *ngIf="rfContact.get('rankId')?.errors?.required && rfContact.get('rankId')?.touched">
         Trình độ học vấn là bắt buộc !
       </small>
     </div>
@@ -128,36 +167,35 @@
     <div class="col-md-12" formArrayName="skills" *ngIf="skills.controls.length">
       <div class="form-group" *ngFor="let c of skills.controls; index as i">
         <label class="col-form-label">Kĩ năng:</label>
-        <input class="form-control" type="tel"  [formControlName]="i" placeholder="Nhập kỹ năng">
+        <input class="form-control" type="tel" [formControlName]="i" placeholder="Nhập kỹ năng">
         <div class="text-right">
           <button type="button" class="btn btn-info" (click)="addSkill()">+</button>
-          <button type="button" class="btn btn-danger" (click)="removeSkill(i)" *ngIf="skills.controls.length > 1">-</button>
+          <button type="button" class="btn btn-danger" (click)="removeSkill(i)"
+            *ngIf="skills.controls.length > 1">-</button>
         </div>
       </div>
     </div>
 
     <div class="form-group col-md-3">
       <label for="example-text-input" class="col-form-label">Ngày bắt đâu tuyển :</label>
-      <p-calendar [(ngModel)]="date7"  [showIcon]="true"
-                  [minDate]="minDate" [showTime]="true"
-                  inputId="time" formControlName="startRecruitmentDate">
+      <p-calendar [(ngModel)]="date7" [showIcon]="true" [minDate]="minDate" [showTime]="true" inputId="time"
+        formControlName="startRecruitmentDate">
 
       </p-calendar>
       <small class="col alert text-danger" role="alert"
-           *ngIf="rfContact.get('startRecruitmentDate')?.errors?.required && rfContact.get('startRecruitmentDate')?.touched">
+        *ngIf="rfContact.get('startRecruitmentDate')?.errors?.required && rfContact.get('startRecruitmentDate')?.touched">
         Chọn ngày bắt đâu tuyển dụng là bắt buộc !
       </small>
     </div>
 
     <div class="form-group col-md-3">
       <label for="example-text-input" class="col-form-label">Hạn nộp hồ sơ :</label>
-      <p-calendar [(ngModel)]="date8" [showTime]="true"
-                  [showIcon]="true" [minDate]="this.rfContact.value.startRecruitmentDate"
-                  inputId="time" formControlName="dueDate">
+      <p-calendar [(ngModel)]="date8" [showTime]="true" [showIcon]="true"
+        [minDate]="this.rfContact.value.startRecruitmentDate" inputId="time" formControlName="dueDate">
 
       </p-calendar>
       <small class="col alert text-danger" role="alert"
-           *ngIf="rfContact.get('dueDate')?.errors?.required && rfContact.get('dueDate')?.touched">
+        *ngIf="rfContact.get('dueDate')?.errors?.required && rfContact.get('dueDate')?.touched">
         Chọn hạn nộp hồ sơ là bắt buộc !
       </small>
     </div>
@@ -171,47 +209,40 @@
         </option>
       </select>
       <small class="col alert text-danger" role="alert"
-           *ngIf="rfContact.get('contactId')?.errors?.required && rfContact.get('contactId')?.touched">
+        *ngIf="rfContact.get('contactId')?.errors?.required && rfContact.get('contactId')?.touched">
         Chọn người liên hệ là bắt buộc !
       </small>
     </div>
 
     <div class="form-group col-md-12">
       <label for="example-text-input" class="col-form-label">Quyền lợi được hưởng :</label>
-      <textarea class="form-control col-md-12" pInputTextarea formControlName="benefits"
-                [rows]="3" [cols]="80"
-                autoResize="autoResize" [maxLength]="50"
-                placeholder="Nhập quyền lợi được hưởng">
+      <textarea class="form-control col-md-12" pInputTextarea formControlName="benefits" [rows]="3" [cols]="80"
+        autoResize="autoResize" [maxLength]="50" placeholder="Nhập quyền lợi được hưởng">
 
       </textarea>
       <small class="col alert text-danger" role="alert"
-           *ngIf="rfContact.get('benefits')?.errors?.required && rfContact.get('benefits')?.touched">
+        *ngIf="rfContact.get('benefits')?.errors?.required && rfContact.get('benefits')?.touched">
         Nhập quyền lợi được hưởng là bắt buộc !
       </small>
     </div>
 
     <div class="form-group col-md-12">
       <label for="example-text-input" class="col-form-label">Yêu cầu công việc :</label>
-      <textarea class="col-md-12" pInputTextarea formControlName="jobRequirement"
-                [rows]="3" [cols]="80"
-                autoResize="autoResize" [maxLength]="50"
-                placeholder="Nhập yêu cầu công việc">
+      <textarea class="col-md-12" pInputTextarea formControlName="jobRequirement" [rows]="3" [cols]="80"
+        autoResize="autoResize" [maxLength]="50" placeholder="Nhập yêu cầu công việc">
 
       </textarea>
       <small class="col alert text-danger" role="alert"
-           *ngIf="rfContact.get('jobRequirement')?.errors?.required && rfContact.get('jobRequirement')?.touched">
+        *ngIf="rfContact.get('jobRequirement')?.errors?.required && rfContact.get('jobRequirement')?.touched">
         Nhập yêu cầu công việc là bắt buộc !
       </small>
     </div>
-</div>
-    <div class="form-group row">
-      <div class="col-md-10 offset-md-2">
-        <button  class="btn btn-primary" type="submit"
-                 [disabled]=!this.rfContact.valid>
-          Lưu
-        </button>
-      </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-md-10 offset-md-2">
+      <button class="btn btn-primary" type="submit" [disabled]=!this.rfContact.valid>
+        Lưu
+      </button>
     </div>
+  </div>
 </form>
-
-

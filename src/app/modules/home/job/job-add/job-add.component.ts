@@ -47,26 +47,26 @@ export class JobAddComponent implements OnInit {
 
   ngOnInit() {
     this.rfContact = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(150), Validators.pattern('^[a-zA-Z0-9aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ _]*$')]],
       jobPositionId: ['', [Validators.required]],
-      numberExperience: ['', [Validators.required]],
+      numberExperience: ['', [Validators.required, Validators.min(0)]],
       workingFormId: ['', [Validators.required]],
       addressWork: ['', [Validators.required, Validators.minLength(3)]],
       academicLevelId: ['', [Validators.required]],
       rankId: ['', [Validators.required]],
-      qtyPerson: ['', [Validators.required]],
+      qtyPerson: ['', [Validators.required, Validators.min(0)]],
       startRecruitmentDate: ['', [Validators.required]],
       dueDate: ['', [Validators.required]],
       description: ['', [Validators.required, Validators.minLength(3)]],
       benefits: ['', [Validators.required, Validators.minLength(3)]],
       jobRequirement: ['', [Validators.required, Validators.minLength(3)]],
-      salaryMin: ['', [Validators.required]],
-      salaryMax: ['', [Validators.required]],
+      salaryMin: ['', [Validators.required, Validators.min(0), Validators.max(200)]],
+      salaryMax: ['', [Validators.required, Validators.min(0), Validators.max(200)]],
       contactId: ['', [Validators.required]],
       skills: this.fb.array([
         this.fb.control(''),
       ]),
-    });
+    }, { validator: this.salaryMinMaxCustomValidator() });
     this.getJobPosition();
     this.getAcademicLevel();
     this.getWorkingForm();
@@ -76,6 +76,21 @@ export class JobAddComponent implements OnInit {
     this.getUser();
     this.connect();
   }
+
+  salaryMinMaxCustomValidator()
+  {
+    return (control:FormGroup)=>
+    {
+      const rfContact=control.parent
+      if (rfContact)
+      {
+        const min=rfContact.get('salaryMin');
+        const max=rfContact.get('salaryMax');
+        return min.value && max.value && +max.value<+min.value?{error:'min malue'}:null
+      }
+    }
+  } 
+
   public addJob(){
     console.log('skills',this.rfContact.value.skills);
     let skills ='';
@@ -109,6 +124,7 @@ export class JobAddComponent implements OnInit {
     );
   }
 
+  
   public getJobPosition(){
     this.jobService.getJobPosition().subscribe(
       (data: any) => {
