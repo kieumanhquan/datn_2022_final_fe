@@ -32,14 +32,16 @@ export class RegistrationComponent implements OnInit {
     this.authService.addUser(this.regi.value).subscribe(
       (data: any) => {
         // eslint-disable-next-line eqeqeq
-        if (data == false) {
-          alert('Đăng ký thất bại');
-        } else {
-          alert('Đăng ký thành công');
-        }
+        // if (data == false) {
+        //   alert('Đăng ký thất bại');
+        // } else {
+        //   alert('Đăng ký thành công');
+        // }
+        alert('Đăng ký thành công');
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        // alert(error.message);
+        alert(error.error.message);
       },
     );
   }

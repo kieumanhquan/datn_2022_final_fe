@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
     if (this.formLogin.valid) {
       this.authService.login(this.formLogin.value).subscribe(
         data => {
+          alert('Đăng nhập thành công');
           this.isLoggedIn = true;
           this.tokenService.saveToken(data.token);
           // eslint-disable-next-line max-len
@@ -73,6 +74,9 @@ export class LoginComponent implements OnInit {
           }
           /*       this.tokenService.saveUser(data.userName);
                  this.roles = this.tokenService.getUser().roles;*/
+        },      
+        (error: HttpErrorResponse) => {
+          alert('Tài khoảng hoặc mật khẩu không chính xác');
         },
       );
       // eslint-disable-next-line max-len

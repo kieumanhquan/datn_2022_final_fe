@@ -1,6 +1,6 @@
 <h1 class="container-fluid text-center"> Tạo Công Việc Mới</h1>
-<!-- <form novalidate (ngSubmit)="onSubmit()" [formGroup]="rfContact" class="row justify-content-md-center container"> -->
-<form (ngSubmit)="onSubmit()" [formGroup]="rfContact" class="row justify-content-md-center container">
+<form novalidate (ngSubmit)="onSubmit()" [formGroup]="rfContact" class="row justify-content-md-center container">
+  <!-- <form (ngSubmit)="onSubmit()" [formGroup]="rfContact" class="row justify-content-md-center container"> -->
   <div class="form-row">
     <div class="form-group col-md-12">
       <label for="example-text-input" class="col-form-label">Tên công việc :</label>
@@ -65,12 +65,12 @@
       </small>
       <small class="col alert text-danger" role="alert"
         *ngIf="rfContact.get('salaryMin')?.errors?.min && (rfContact.get('salaryMin')?.dirty || rfContact.get('salaryMin')?.touched)">
-        Lương tối thiểu khổng được nhỏ hơn 0 !
+        Lương phải lớn hơn 0 !
       </small>
       <small class="col alert text-danger" role="alert"
-      *ngIf="rfContact.get('salaryMin')?.errors?.max && (rfContact.get('salaryMin')?.dirty || rfContact.get('salaryMin')?.touched)">
-      Lương tối da khổng được lon hơn 200 !
-    </small>
+        *ngIf="rfContact.get('salaryMin')?.errors?.max && (rfContact.get('salaryMin')?.dirty || rfContact.get('salaryMin')?.touched)">
+        Lương khổng được lon hơn 200 !
+      </small>
       <small class="col alert text-danger" role="alert"
         *ngIf="rfContact.get('salaryMin')?.errors?.salaryMinMaxCustomValidator && (rfContact.get('salaryMin')?.dirty || rfContact.get('salaryMin')?.touched)">
         Lương tối đa phải lơn hơn lương tối thiểu
@@ -84,6 +84,14 @@
       <small class="col alert text-danger" role="alert"
         *ngIf="rfContact.get('salaryMax')?.errors?.required && rfContact.get('salaryMax')?.touched">
         Nhập lương tối đa là bắt buộc !
+      </small>
+      <small class="col alert text-danger" role="alert"
+        *ngIf="rfContact.get('salaryMax')?.errors?.min && (rfContact.get('salaryMax')?.dirty || rfContact.get('salaryMax')?.touched)">
+        Lương phải lớn hơn 0 !
+      </small>
+      <small class="col alert text-danger" role="alert"
+        *ngIf="rfContact.get('salaryMax')?.errors?.max && (rfContact.get('salaryMax')?.dirty || rfContact.get('salaryMax')?.touched)">
+        Lương khổng được lon hơn 200 !
       </small>
     </div>
 
@@ -117,9 +125,9 @@
         Nhập kinh nghiệm là bắt buộc !
       </small>
       <small class="col alert text-danger" role="alert"
-      *ngIf="rfContact.get('numberExperience')?.errors?.min && rfContact.get('numberExperience')?.touched">
-      Nhập kinh nghiệm không được nhỏ hơn 0 !
-    </small>
+        *ngIf="rfContact.get('numberExperience')?.errors?.min && rfContact.get('numberExperience')?.touched">
+        Nhập kinh nghiệm không được nhỏ hơn 0 !
+      </small>
     </div>
 
     <div class="form-group col-md-3">
@@ -131,9 +139,9 @@
         Nhập số lượng cần tuyển là bắt buộc !
       </small>
       <small class="col alert text-danger" role="alert"
-      *ngIf="rfContact.get('qtyPerson')?.errors?.min && rfContact.get('qtyPerson')?.touched">
-      Nhập số lượng cần tuyển không được nhỏ hơn 0 !
-    </small>
+        *ngIf="rfContact.get('qtyPerson')?.errors?.min && rfContact.get('qtyPerson')?.touched">
+        Nhập số lượng cần tuyển không được nhỏ hơn 0 !
+      </small>
     </div>
 
     <div class="form-group col-md-3">

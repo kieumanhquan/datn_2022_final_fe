@@ -73,6 +73,9 @@ export class UserListComponent implements OnInit {
       (data: any) => {
         this.users = data.list;
         this.totalRecords = data.totalPage * this.size;
+        if((data.list.length === 0) ){
+          alert('không tìm thấy kết quả');
+        }
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

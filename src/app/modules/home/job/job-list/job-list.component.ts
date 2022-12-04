@@ -107,6 +107,9 @@ export class JobListComponent implements OnInit {
       (data: any) => {
         this.jobs = data.list;
         this.totalRecords = data.totalPage;
+        if((data.list.length === 0) ){
+          alert('không tìm thấy kết quả');
+        }
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

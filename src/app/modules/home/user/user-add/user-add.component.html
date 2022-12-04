@@ -15,6 +15,10 @@
         *ngIf="regiJe.get('userName')?.errors?.maxlength && (regiJe.get('userName')?.dirty || regiJe.get('userName')?.touched)">
         Tên tài khoản không được vượt quá 50 kí tự !
       </small>
+      <small class="col alert text-danger" role="alert"
+      *ngIf="regiJe.get('userName')?.errors?.pattern && (regiJe.get('userName')?.dirty || regiJe.get('userName')?.touched)">
+      Tên tài khoản không được chứa kí tự đặc biệt !
+    </small>
     </div>
   </div>
 
@@ -63,7 +67,7 @@
   <div class="form-group row">
     <label class="col-md-2 col-form-label">Số điện thoại: </label>
     <div class="col-md-10">
-      <input class="form-control" type="text" formControlName="phoneNumber">
+      <input class="form-control" type="number" formControlName="phoneNumber">
       <small class="col alert text-danger" role="alert"
         *ngIf="regiJe.get('phoneNumber')?.errors?.required && regiJe.get('phoneNumber')?.touched">
         Số điện thoại không được để trống !
