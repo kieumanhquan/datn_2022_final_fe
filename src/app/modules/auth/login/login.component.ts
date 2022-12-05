@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
                  this.roles = this.tokenService.getUser().roles;*/
         },      
         (error: HttpErrorResponse) => {
-          alert('Tài khoảng hoặc mật khẩu không chính xác');
+          alert('Tài khoản hoặc mật khẩu không chính xác');
         },
       );
       // eslint-disable-next-line max-len

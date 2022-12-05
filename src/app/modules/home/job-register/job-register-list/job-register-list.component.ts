@@ -43,9 +43,9 @@ export class JobRegisterListComponent implements OnInit {
 
   getInnitData() {
     this.selectedName = '';
-    this.selectedStatusJobAdvanced = {id: 1, code: 'Chờ duyệt'};
+    this.selectedStatusJobAdvanced = {id: 0, code: 'Tất cả'};
     this.searchJobRegister = {name: this.selectedName,statusRegisterId:this.selectedStatusJobAdvanced.id};
-    console.log(this.searchJobRegister);
+    // console.log(this.searchJobRegister);
     this.page = 0;
     this.size = 2;
     this.totalRecords = 5;
@@ -99,6 +99,9 @@ export class JobRegisterListComponent implements OnInit {
       (data: any) => {
         this.jobRegisters = data.list;
         this.totalRecords = data.totalPage ;
+        if((data.list.length === 0) ){
+          alert('không tìm thấy kết quả');
+        }
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

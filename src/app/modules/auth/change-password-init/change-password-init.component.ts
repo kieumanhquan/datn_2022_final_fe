@@ -38,7 +38,7 @@ export class ChangePasswordInitComponent implements OnInit {
         }
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        // alert('Lấy OTP thất bại');
       },
     );
   }
