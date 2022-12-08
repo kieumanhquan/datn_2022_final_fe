@@ -16,7 +16,7 @@ export class UserAddComponent implements OnInit {
 
   ngOnInit() {
     this.regiJe = this.fb.group({
-      userName: ['', [Validators.required, Validators.maxLength(50), Validators.pattern('^[a-zA-Z0-9_ njklo-0]*$')]],
+      userName: ['', [Validators.required, Validators.maxLength(50), Validators.pattern('^[a-zA-Z0-9_]*$')]],
       // eslint-disable-next-line max-len
       password: ['', [Validators.required,Validators.maxLength(16),Validators.pattern('^(?=[^A-Z\\n]*[A-Z])(?=[^a-z\\n]*[a-z])(?=[^0-9\\n]*[0-9])(?=[^#?!@$%^&*\\n-]*[#?!@$%^&*-]).{8,}$')]],
       name: ['', [Validators.required,Validators.maxLength(20)]],
@@ -26,10 +26,11 @@ export class UserAddComponent implements OnInit {
     });
   }
   public addUser(){
-
+    console.log('chay dc den day');
     this.authService.addJeUser(this.regiJe.value).subscribe(
       (data: any) => {
         // eslint-disable-next-line eqeqeq
+        
         // if (data == false) {
         //   alert('Đăng ký thất bại');
         // } else {
@@ -41,11 +42,12 @@ export class UserAddComponent implements OnInit {
         alert(error.error.message);
         // console.log(error);
         // console.log(error.status)
-        // console.log(error.error.message);
+        console.log(error.error.message);
       },
     );
   }
   onSubmit() {
+    console.log('hcay dc den day');
     this.addUser();
   }
 }
