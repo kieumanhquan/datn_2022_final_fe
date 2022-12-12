@@ -27,10 +27,10 @@ import {JobRegisterService} from '../../../service/jobRegister.service';
   styleUrls: ['./job-public-detail.component.scss'],
 })
 export class JobPublicDetailComponent implements OnInit {
-
   job: Job;
   user: User;
   info: FormGroup;
+  jobRegister: JobRegister;
   genders: any[];
   academicLevels: AcademicLevel[];
   workingForms: WorkingForm[];
@@ -57,8 +57,6 @@ export class JobPublicDetailComponent implements OnInit {
   stompClient = null;
   notifications: Notifications;
   type: Type;
-
-  jobRegister: JobRegister;
 
   displayPositionInput= false;
   reasonDto: ReasonDto;
@@ -215,7 +213,7 @@ export class JobPublicDetailComponent implements OnInit {
     const token = this.userService.getDecodedAccessToken();
     if (token) {
       this.getUserByUserName(token.sub);
-      console.log('Day la id',this.route.snapshot.params.id);
+      console.log('Đây là id',this.route.snapshot.params.id);
       this.addViews();
     }
   }
@@ -287,12 +285,12 @@ export class JobPublicDetailComponent implements OnInit {
 
   onSelected(event) {
     this.fileCv = event.currentFiles[0];
-    console.log('day la file', this.fileCv);
+    console.log('Đây là file', this.fileCv);
   }
 
   onSelectedAvatar(event) {
     this.fileAvatar = event.currentFiles[0];
-    console.log('day la file', this.fileAvatar);
+    console.log('Đây là file', this.fileAvatar);
   }
 
   uploadCv() {
@@ -330,7 +328,7 @@ export class JobPublicDetailComponent implements OnInit {
 
   onCancel() {
     // eslint-disable-next-line max-len
-    this.jobRegister.statusJobRegister = {code: 'Ứng viên đã hủy ứng tuyển', delete: false, description: 'Ứng vine đã hủy ứng tuyển', id: 6};
+    this.jobRegister.statusJobRegister = {code: 'Ứng viên đã hủy ứng tuyển', delete: false, description: 'Ứng viên đã hủy ứng tuyển', id: 6};
     this.updateJobRegister();
     this.sendRefuse();
     this.onRefuse();
@@ -338,7 +336,8 @@ export class JobPublicDetailComponent implements OnInit {
   }
 
   connect() {
-    const socket = new SockJS('https://kieumanhquan1821050227.herokuapp.com/gkz-stomp-endpoint');
+    // const socket = new SockJS('https://kieumanhquan1821050227.herokuapp.com/gkz-stomp-endpoint');
+    const socket = new SockJS('http://localhost:9090/gkz-stomp-endpoint');
     this.stompClient = Stomp.over(socket);
     const _this = this;
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
@@ -360,7 +359,7 @@ export class JobPublicDetailComponent implements OnInit {
   }
 
   sendApply() {
-    this.type = {code: 'ứng tuyển', delete: false, description: 'ứng tuyển', id: 1};
+    this.type = {code: 'Ứng tuyển', delete: false, description: 'Ứng tuyển', id: 1};
     // eslint-disable-next-line max-len
     this.notifications = {
       receiver: this.job.creator,
@@ -369,7 +368,7 @@ export class JobPublicDetailComponent implements OnInit {
   }
 
   sendRefuse() {
-    this.type = {code: 'ứng tuyển', delete: false, description: 'ứng tuyển', id: 2};
+    this.type = {code: 'Hủy ứng tuyển', delete: false, description: 'Hủy ứng tuyển', id: 2};
     // eslint-disable-next-line max-len
     this.notifications = {
       receiver: this.job.creator,

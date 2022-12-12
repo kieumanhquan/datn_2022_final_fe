@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Job} from '../../../models/model/Job';
 import {Router} from '@angular/router';
+import {JobRegister} from '../../../models/model/JobRegister';
 
 @Component({
   selector: 'ngx-job-public-title',
@@ -18,6 +19,4 @@ export class JobPublicTitleComponent implements OnInit {
   onReadDetail(id: number) {
     this.router.navigate(['/home-public/job-detail', id]).then(r => console.log(r));
   }
-
-
 }

@@ -36,7 +36,7 @@ export class JobPublicListComponent implements OnInit {
   ngOnInit(): void {
     this.sortOptions = [
       {label: 'Tên công việc', value: 'name'},
-      {label: 'Thời gian nộp hồ sơ', value: 'dueDate'},
+      {label: 'Thời gian nộp', value: 'dueDate'},
     ];
     this.getInnitData();
     this.onSearch();

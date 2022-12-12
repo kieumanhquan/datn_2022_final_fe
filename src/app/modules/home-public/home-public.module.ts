@@ -22,7 +22,7 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
 import {SliderModule} from 'primeng/slider';
 import {DropdownModule} from 'primeng/dropdown';
 import {PaginatorModule} from 'primeng/paginator';
-import {JobPublicViewComponent} from "./job-public-view/job-public-view.component";
+import {JobPublicViewComponent} from './job-public-view/job-public-view.component';
 
 const routes: Routes = [{
   path: '',

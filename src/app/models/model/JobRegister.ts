@@ -1,6 +1,6 @@
-import {Job} from "./Job";
-import {User} from "./User";
-import {StatusJobRegister} from "./StatusJobRegister";
+import {Job} from './Job';
+import {User} from './User';
+import {StatusJobRegister} from './StatusJobRegister';
 
 export interface JobRegister{
   id: number;

@@ -76,7 +76,6 @@ export class LoginComponent implements OnInit {
         },
       );
       // eslint-disable-next-line max-len
-
     }
   }
 

@@ -73,8 +73,9 @@ const routes: Routes = [{
     },
     {
       path: 'user/list',
+      // component: UserListComponent,
+      loadChildren: () => import('./user/user.module').then(m => m.UserModule),
       canActivate: [AuthJeGuard],
-      component: UserListComponent,
     },
     {
       path: 'user/add',
@@ -101,10 +102,6 @@ const routes: Routes = [{
     JobRegisterDetailComponent,
     ListJobRegisterComponent,
     PopupReasonComponent,
-    UserListComponent,
-    UserDetailsComponent,
-    UserTitleComponent,
-    UserAddComponent,
     DashboardComponent,
     TagInfoComponent,
   ],
@@ -124,6 +121,7 @@ const routes: Routes = [{
     PrimengModule,
     ChartModule,
   ],
+  providers:[],
   exports: [],
 })
 export class HomeModule {

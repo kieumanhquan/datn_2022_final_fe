@@ -17,19 +17,21 @@
   </div>
 
   <div class="container w-25">
-    <h5>Salary: {{rangeValues[0] + ' - ' + rangeValues[1]}}</h5>
+    <h5>Lương (Triệu/Đồng): {{rangeValues[0] + ' - ' + rangeValues[1]}}</h5>
     <p-slider [(ngModel)]="rangeValues" [range]="true" [max]="200" (onChange)="handleChangeSalary()"></p-slider>
   </div>
 
+  <p-button class="mr-2" label="Tìm kiếm" icon="pi pi-search" iconPos="right" [loading]="" (onClick)="onSearch()"></p-button>
 
-  <p-button class="mr-2" label="Search" icon="pi pi-search" iconPos="right" [loading]="" (onClick)="onSearch()"></p-button>
-  <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+  <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sắp xếp" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+</div>
+<div>
+  <ng-template [ngIf]="user">
+    <div class="d-flex flex-wrap container">
+      <ngx-job-public-title class="content-detail" *ngFor="let job of jobs" [job]="job"> </ngx-job-public-title>
+    </div>
+  </ng-template>
+
+  <p-paginator class="fixed-bottom mb-5" [rows]="2" [totalRecords]="totalRecords" [rowsPerPageOptions]="[3,6,9]" (onPageChange)="paginate($event)"></p-paginator>
 </div>
 
-<ng-template [ngIf]="user">
-  <div class="d-flex flex-wrap container">
-    <ngx-job-public-title class="content-detail" *ngFor="let job of jobs" [job]="job"> </ngx-job-public-title>
-  </div>
-</ng-template>
-
-<p-paginator class="fixed-bottom mb-5" [rows]="2" [totalRecords]="totalRecords" [rowsPerPageOptions]="[3,6,9]" (onPageChange)="paginate($event)"></p-paginator>

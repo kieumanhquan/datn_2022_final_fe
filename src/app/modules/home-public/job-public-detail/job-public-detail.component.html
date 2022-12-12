@@ -171,9 +171,9 @@
         </div>
       </form>
       <ng-template pTemplate="footer">
-        <p-button icon="pi pi-check" (click)="onApply()" label="Yes" class="p-button-text"
+        <p-button icon="pi pi-check" (click)="onApply()" label="Lưu" class="p-button-text"
                   [disabled]="!checkApply()"></p-button>
-        <p-button icon="pi pi-times" (click)="displayPosition=false" label="No" class="ml-2"></p-button>
+        <p-button icon="pi pi-times" (click)="displayPosition=false" label="Thoát" class="ml-2"></p-button>
       </ng-template>
     </p-dialog>
 
@@ -242,7 +242,7 @@
     <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="reasonDto.reason"></textarea>
   </div>
   <ng-template pTemplate="footer">
-    <p-button icon="pi pi-check" type="submit" (click)="onCancel()" label="Yes" class="p-button-text"></p-button>
-    <p-button icon="pi pi-times" (click)="displayPositionInput = false" label="No" class="ml-2"></p-button>
+    <p-button icon="pi pi-check" type="submit" (click)="onCancel()" label="Lưu" class="p-button-text"></p-button>
+    <p-button icon="pi pi-times" (click)="displayPositionInput = false" label="Thoát" class="ml-2"></p-button>
   </ng-template>
 </p-dialog>
