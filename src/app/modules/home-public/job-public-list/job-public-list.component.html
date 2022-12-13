@@ -26,12 +26,16 @@
   <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sắp xếp" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
 </div>
 <div>
-  <ng-template [ngIf]="user">
-    <div class="d-flex flex-wrap container">
-      <ngx-job-public-title class="content-detail" *ngFor="let job of jobs" [job]="job"> </ngx-job-public-title>
+  <ng-template [ngIf]="user" class="row container-fluid ml-5">
+<!--    <div class="d-flex flex-wrap container col-md-6 ">-->
+    <div class="d-flex flex-wrap ml-5">
+      <div class="row w-100 float-left ml-5">
+        <ngx-job-public-title class="content-detail w-100 col-md-5" *ngFor="let job of jobs" [job]="job"> </ngx-job-public-title>
+      </div>
     </div>
+
   </ng-template>
 
-  <p-paginator class="fixed-bottom mb-5" [rows]="2" [totalRecords]="totalRecords" [rowsPerPageOptions]="[3,6,9]" (onPageChange)="paginate($event)"></p-paginator>
+  <p-paginator class="fixed-bottom mb-5" [rows]="3" [totalRecords]="totalRecords" [rowsPerPageOptions]="[3,6,9]" (onPageChange)="paginate($event)"></p-paginator>
 </div>
 

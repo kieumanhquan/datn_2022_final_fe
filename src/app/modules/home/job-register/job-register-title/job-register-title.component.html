@@ -1,4 +1,4 @@
-<div class="ml-5">
+<div class="ml-1">
   <div class="d-flex justify-content-lg-start container bg-info p-3 rounded mb-4">
     <p-avatar class="ml-2" [image]="this.avatar" size="xlarge"></p-avatar>
 
@@ -14,8 +14,8 @@
       </div>
 
       <div class="d-flex mt-2 justify-content-between">
-        <p class="badge badge-secondary mr-2" style="cursor: pointer;" (click)="onReadJobDetail(jobRegister.job.id)">
-          {{jobRegister.job.name}}
+        <p class="badge badge-secondary mr-2" style="cursor: pointer;" (click)="onReadJobDetail(jobRegister.job.id)" pTooltip="{{jobRegister.job.name}}">
+          {{jobRegister.job.name | slice :0:30}}
         </p>
 
         <p class="badge badge-secondary mr-2" style="cursor: pointer;" (click)="onReadJobDetail(jobRegister.job.id)">

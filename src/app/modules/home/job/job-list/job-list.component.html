@@ -72,9 +72,9 @@
 <!--  </thead>-->
 
 <!--  <tr>-->
-<div  class="row ml-3 mr-5">
+<div  class="row">
   <ng-template [ngIf]="user">
-    <ngx-job-title *ngFor="let job of jobs" [job]="job" [user]="user"></ngx-job-title>
+    <ngx-job-title class="w-50" *ngFor="let job of jobs" [job]="job" [user]="user"></ngx-job-title>
   </ng-template>
 </div>
 

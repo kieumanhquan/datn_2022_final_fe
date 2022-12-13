@@ -1,11 +1,11 @@
-<div class="ml-3">
-  <div class="d-flex justify-content-lg-start container bg-info p-3 rounded mb-4 ml-5" >
+<div class="ml-1">
+  <div class="d-flex justify-content-lg-start container bg-info p-3 rounded mb-4 ml-1" >
     <div class="ml-5">
       <div class="d-flex justify-content-lg-between">
-        <a (click)="onReadDetail(job.id)" style="cursor: pointer;" class="display-5 font-weight-bold">
-          {{job.name}}
+        <a (click)="onReadDetail(job.id)" style="cursor: pointer;" class="display-5 font-weight-bold" pTooltip="{{job.name}}">
+          {{job.name | slice:0:40}}
         </a>
-        <p class="badge badge-secondary mr-2">
+        <p class="badge badge-secondary ml-5 mr-2">
           {{this.job.dueDate | date}}
         </p>
       </div>
