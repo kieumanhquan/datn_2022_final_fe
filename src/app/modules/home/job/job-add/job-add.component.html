@@ -57,7 +57,7 @@
 
     <div class="form-group col-md-3">
       <label for="example-text-input" class="col-form-label">Lương tối thiểu :</label>
-      <input class="form-control" type="number" [min]="0" formControlName="salaryMin"
+      <input class="form-control" type="number" formControlName="salaryMin"
         placeholder="Nhập lương tối thiểu">
       <small class="col alert text-danger" role="alert"
         *ngIf="rfContact.get('salaryMin')?.errors?.required && rfContact.get('salaryMin')?.touched">
@@ -79,7 +79,7 @@
 
     <div class="form-group col-md-3">
       <label for="example-text-input" class="col-form-label">Lương tối đa :</label>
-      <input class="form-control" type="number" [min]="this.rfContact.value.salaryMin" formControlName="salaryMax"
+      <input class="form-control" type="number" formControlName="salaryMax"
         placeholder="Nhập lương tối đa">
       <small class="col alert text-danger" role="alert"
         *ngIf="rfContact.get('salaryMax')?.errors?.required && rfContact.get('salaryMax')?.touched">
@@ -139,8 +139,8 @@
         Nhập số lượng cần tuyển là bắt buộc !
       </small>
       <small class="col alert text-danger" role="alert"
-        *ngIf="rfContact.get('qtyPerson')?.errors?.min && rfContact.get('qtyPerson')?.touched">
-        Nhập số lượng cần tuyển không được nhỏ hơn 0 !
+        *ngIf="rfContact.get('qtyPerson')?.errors?.min && (rfContact.get('qtyPerson')?.dirty || rfContact.get('qtyPerson')?.touched)">
+        Số lượng cần tuyển phải lớn hơn hoặc bằng 1 !
       </small>
     </div>
 

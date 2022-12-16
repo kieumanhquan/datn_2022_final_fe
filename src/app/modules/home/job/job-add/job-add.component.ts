@@ -54,7 +54,7 @@ export class JobAddComponent implements OnInit {
       addressWork: ['', [Validators.required, Validators.minLength(3)]],
       academicLevelId: ['', [Validators.required]],
       rankId: ['', [Validators.required]],
-      qtyPerson: ['', [Validators.required, Validators.min(0)]],
+      qtyPerson: ['', [Validators.required, Validators.min(1)]],
       startRecruitmentDate: ['', [Validators.required]],
       dueDate: ['', [Validators.required]],
       description: ['', [Validators.required, Validators.minLength(3)]],
