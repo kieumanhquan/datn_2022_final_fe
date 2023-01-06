@@ -54,28 +54,27 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isSubmitted = true;
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     if (this.formLogin.valid) {
       this.authService.login(this.formLogin.value).subscribe(
         data => {
-          this.isLoggedIn = true;
-          this.tokenService.saveToken(data.token);
-          // eslint-disable-next-line max-len
-          if (this.userService.getDecodedAccessToken().auth === 'ROLE_ADMIN' || this.userService.getDecodedAccessToken().auth === 'ROLE_JE') {
-            this.getUserByUserName();
-          // }else if (this.userService.getDecodedAccessToken().auth==='ROLE_USER' ||
-          //   this.userService.getDecodedAccessToken().auth === 'ROLE_ADMIN' ||
-          //   this.userService.getDecodedAccessToken().auth === 'ROLE_JE'){
-          //   this.router.navigate(['/home-public']).then(r => console.log(r));
-          }else {
-            this.router.navigate(['/auth/login']).then(r => console.log(r));
-            this.router.navigate(['/home-public']).then(r => console.log(r));
-          }
-          /*       this.tokenService.saveUser(data.userName);
-                 this.roles = this.tokenService.getUser().roles;*/
+            this.isLoggedIn = true;
+            this.tokenService.saveToken(data.token);
+            // eslint-disable-next-line max-len
+            if (this.userService.getDecodedAccessToken().auth === 'ROLE_ADMIN' || this.userService.getDecodedAccessToken().auth === 'ROLE_JE') {
+              this.getUserByUserName();
+              // }else if (this.userService.getDecodedAccessToken().auth==='ROLE_USER' ||
+              //   this.userService.getDecodedAccessToken().auth === 'ROLE_ADMIN' ||
+              //   this.userService.getDecodedAccessToken().auth === 'ROLE_JE'){
+              //   this.router.navigate(['/home-public']).then(r => console.log(r));
+            }else {
+              this.router.navigate(['/auth/login']).then(r => console.log(r));
+              this.router.navigate(['/home-public']).then(r => console.log(r));
+            }
+            /*       this.tokenService.saveUser(data.userName);
+                   this.roles = this.tokenService.getUser().roles;*/
         },
       );
-      // eslint-disable-next-line max-len
     }
   }
 

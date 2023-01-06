@@ -8,6 +8,7 @@ import {StatusDto} from '../../../../models/Dto/StatusDto';
 // @ts-ignore
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import {JobRegisterService} from "../../../../service/jobRegister.service";
 
 @Component({
   selector: 'ngx-job-title',
@@ -23,7 +24,8 @@ export class JobTitleComponent implements OnInit {
   displayPositionReason: boolean;
   currentDate = new Date().getTime();
 
-  constructor(private readonly router: Router, private jobService: JobService) {
+  constructor(private readonly router: Router, private jobService: JobService
+              , public jobRegisterService: JobRegisterService) {
   }
 
   ngOnInit(): void {
@@ -100,6 +102,10 @@ export class JobTitleComponent implements OnInit {
       },
     });
     doc.save('job.pdf');
+  }
+
+  public getAllRegister(id) {
+    this.router.navigate(['/home/register-job', id]).then(r => console.log(r));
   }
 }
 

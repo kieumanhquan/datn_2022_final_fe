@@ -30,6 +30,7 @@ import {AuthJeGuard} from '../../@core/guards/authJe.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {ChartModule} from 'primeng/chart';
 import { TagInfoComponent } from './dashboard/tag-info/tag-info.component';
+import {RegisterJobComponent} from './job/register-job/register-job.component';
 
 const routes: Routes = [{
   path: '',
@@ -58,6 +59,10 @@ const routes: Routes = [{
     {
       path: 'job-update/:id',
       component: JobUpdateComponent,
+    },
+    {
+      path: 'register-job/:id',
+      component: RegisterJobComponent,
     },
     {
       path: 'list-job-register',
@@ -97,6 +102,7 @@ const routes: Routes = [{
     JobAddComponent,
     JobTitleComponent,
     JobUpdateComponent,
+    RegisterJobComponent,
     JobRegisterListComponent,
     JobRegisterTitleComponent,
     JobRegisterDetailComponent,

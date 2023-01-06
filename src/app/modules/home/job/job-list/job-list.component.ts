@@ -12,6 +12,7 @@ import {SearchJob} from '../../../../models/job/SearchJob';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import {StatusDto} from '../../../../models/Dto/StatusDto';
+import {JobRegisterService} from "../../../../service/jobRegister.service";
 
 @Component({
   selector: 'ngx-job-list',
@@ -38,9 +39,9 @@ export class JobListComponent implements OnInit {
   size: number;
   totalRecords: number;
   sortNumber: number;
-  rangeValues: number[] = [0,200];
+  rangeValues: number[] = [0, 200];
 
-  constructor(public jobService: JobService,private readonly router: Router,private userService: UserService) {
+  constructor(public jobService: JobService, private readonly router: Router, private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -55,10 +56,10 @@ export class JobListComponent implements OnInit {
   }
 
   getInnitData() {
-    this.selectedStatusJobAdvanced = {id: 1, code:'Chờ xét duyệt'};
-    this.searchJob = {name:'',statusId:1,salaryMin:0,salaryMax:200,addressWork:'',skills:''};
+    this.selectedStatusJobAdvanced = {id: 6, code: 'Tất cả'};
+    this.searchJob = {name: '', statusId: 1, salaryMin: 0, salaryMax: 200, addressWork: '', skills: ''};
     this.page = 0;
-    this.size =2;
+    this.size = 2;
     this.totalRecords = 5;
     this.sortNumber = 1;
   }
@@ -76,7 +77,7 @@ export class JobListComponent implements OnInit {
 
   onSortChange(event) {
     const value = event.value;
-    console.log(value,value);
+    console.log(value, value);
 
     if (value.indexOf('name') === 0) {
       this.sortNumber = 2;
@@ -100,9 +101,26 @@ export class JobListComponent implements OnInit {
     this.filteredStatusJobs = filtered;
   }
 
+  // @ts-ignore
   public onSearch() {
-    console.log('status',this.selectedStatusJobAdvanced);
-    this.searchJob.statusId = this.selectedStatusJobAdvanced.id;
+    console.log('status', this.selectedStatusJobAdvanced);
+    // if (this.searchJob.statusId === 1) {
+    //   this.searchJob.statusId = this.selectedStatusJobAdvanced.id;
+    //   this.jobService.findJob(this.searchJob, this.page, this.size).subscribe(
+    //     (data: any) => {
+    //       this.jobs = data.list;
+    //       this.totalRecords = data.totalPage;
+    //     },
+    //     (error: HttpErrorResponse) => {
+    //       alert(error.message);
+    //     },
+    //   );
+    // }
+    if (this.selectedStatusJobAdvanced.id === 6) {
+      this.searchJob.statusId = undefined;
+    } else {
+      this.searchJob.statusId = this.selectedStatusJobAdvanced.id;
+    }
     this.jobService.findJob(this.searchJob, this.page, this.size).subscribe(
       (data: any) => {
         this.jobs = data.list;
@@ -112,6 +130,17 @@ export class JobListComponent implements OnInit {
         alert(error.message);
       },
     );
+    // }
+    // this.searchJob.statusId = this.selectedStatusJobAdvanced.id;
+    // this.jobService.findJob(this.searchJob, this.page, this.size).subscribe(
+    //   (data: any) => {
+    //     this.jobs = data.list;
+    //     this.totalRecords = data.totalPage;
+    //   },
+    //   (error: HttpErrorResponse) => {
+    //     alert(error.message);
+    //   },
+    // );
   }
 
   public onSortByName() {
@@ -130,7 +159,7 @@ export class JobListComponent implements OnInit {
   paginate(event: any) {
     this.page = event.page;
     this.size = event.rows;
-    if(this.sortNumber === 1){
+    if (this.sortNumber === 1) {
       this.onSearch();
     } else {
       this.onSortByName();
@@ -146,7 +175,7 @@ export class JobListComponent implements OnInit {
     this.userService.getUserByUserName(username).subscribe(
       (data: User) => {
         this.user = data;
-        console.log('roles',data.roles);
+        console.log('roles', data.roles);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -203,6 +232,7 @@ export class JobListComponent implements OnInit {
   onPreview(id: number) {
     this.router.navigate(['/home-public/job-detail', id]).then(r => console.log(r));
   }
+
   onUp() {
     this.getInit();
     this.statusDto.jobId = this.job.id;
@@ -225,4 +255,7 @@ export class JobListComponent implements OnInit {
       },
     );
   }
+
+
+
 }

@@ -14,6 +14,7 @@ import {AppComponent} from '../../app.component';
 import {BrowserModule} from '@angular/platform-browser';
 // @ts-ignore
 import { ModalModule } from 'ngx-bootstrap/modal';
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 const routes: Routes = [{
   path: '',
@@ -47,17 +48,18 @@ const routes: Routes = [{
     // AppComponent,
     // ModalPopupComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    ButtonModule,
-    InputTextModule,
-    ReactiveFormsModule,
-    // BrowserModule,
-    // ModalModule.forRoot(),
-    // FormsModule,
-    // ReactiveFormsModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        ButtonModule,
+        InputTextModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        // BrowserModule,
+        // ModalModule.forRoot(),
+        // FormsModule,
+        // ReactiveFormsModule,
+    ],
   // bootstrap: [AppComponent],
 })
 export class AuthModule {
