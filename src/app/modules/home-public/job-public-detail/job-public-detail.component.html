@@ -26,7 +26,7 @@
                             [showUploadButton]="false" [showCancelButton]="false"></p-fileUpload>
             </div>
           </div>
-          <div class="d-flex">
+          <!-- <div class="d-flex">
             <ng-template [ngIf]="!checkedProfile">
               <label class="col-md-4 col-form-label">Tải avatar:</label>
               <div class="col-md-8">
@@ -34,7 +34,7 @@
                               accept="image/*" [showUploadButton]="false" [showCancelButton]="false"></p-fileUpload>
               </div>
             </ng-template>
-          </div>
+          </div> -->
         </div>
 
         <div class="col-md-8">
@@ -46,7 +46,7 @@
             </div>
           </div>
           <ng-template [ngIf]="!checkedProfile">
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <label class="col-md-4 col-form-label">Quê quán:</label>
               <div class="col-md-8">
                 <input class="form-control" type="text" formControlName="homeTown">
@@ -55,9 +55,9 @@
             <div class="col alert alert-danger" role="alert"
                  *ngIf="info.get('homeTown')?.errors?.required && info.get('homeTown')?.touched">
               HomeTown is required!
-            </div>
+            </div> -->
 
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <label class="col-md-4 col-form-label">Giới tinh:</label>
               <div class="col-md-8">
                 <select
@@ -73,9 +73,9 @@
             <div class="col alert alert-danger" role="alert"
                  *ngIf="info.get('gender')?.errors?.required && info.get('gender')?.touched">
               Gender is required!
-            </div>
+            </div> -->
 
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <label class="col-md-4 col-form-label">Ngày tháng năm sinh:</label>
               <div class="col-md-8">
                 <p-calendar [showIcon]="true" [maxDate]="currentDate" inputId="icon"
@@ -85,8 +85,8 @@
             <div class="col alert alert-danger" role="alert"
                  *ngIf="info.get('birthDay')?.errors?.required && info.get('birthDay')?.touched">
               BirthDay is required!
-            </div>
-
+            </div> -->
+<!-- 
             <div formArrayName="skills" *ngIf="skills.controls.length">
               <div class="form-group row" *ngFor="let c of skills.controls; index as i">
                 <label class="col-md-4 col-form-label">Skills:</label>
@@ -100,9 +100,9 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <label class="col-md-4 col-form-label">Số năm kinh nghiệm:</label>
               <div class="col-md-8">
                 <input class="form-control" type="number" [min]="0" formControlName="numberYearsExperience">
@@ -111,9 +111,9 @@
             <div class="col alert alert-danger" role="alert"
                  *ngIf="info.get('numberYearsExperience')?.errors?.required && info.get('numberYearsExperience')?.touched">
               NumberYearsExperience is required!
-            </div>
+            </div> -->
 
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <label class="col-md-4 col-form-label">Trình độ học vấn:</label>
               <div class="col-md-8">
                 <select
@@ -129,8 +129,8 @@
             <div class="col alert alert-danger" role="alert"
                  *ngIf="info.get('academicLevel')?.errors?.required && info.get('academicLevel')?.touched">
               AcademicLevelId is required!
-            </div>
-
+            </div> -->
+<!-- 
             <div class="form-group row">
               <label class="col-md-4 col-form-label">Mức lương mong muốn:</label>
               <div class="col-md-8">
@@ -140,9 +140,9 @@
             <div class="col alert alert-danger" role="alert"
                  *ngIf="info.get('desiredSalary')?.errors?.required && info.get('desiredSalary')?.touched">
               NumberYearsExperience is required!
-            </div>
+            </div> -->
 
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <label class="col-md-4 col-form-label">Địa chỉ làm việc mong muốn:</label>
               <div class="col-md-8">
                 <input class="form-control" type="text" formControlName="desiredWorkingAddress">
@@ -151,8 +151,8 @@
             <div class="col alert alert-danger" role="alert"
                  *ngIf="info.get('desiredWorkingAddress')?.errors?.required && info.get('desiredWorkingAddress')?.touched">
               DesiredWorkingAddress is required!
-            </div>
-
+            </div> -->
+<!-- 
             <div class="form-group row">
               <label class="col-md-4 col-form-label">Hình thức làm việc:</label>
               <div class="col-md-8">
@@ -165,7 +165,7 @@
                   </option>
                 </select>
               </div>
-            </div>
+            </div> -->
           </ng-template>
 
         </div>

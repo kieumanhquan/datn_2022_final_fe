@@ -26,7 +26,6 @@ export class UserAddComponent implements OnInit {
     });
   }
   public addUser(){
-    console.log('chay dc den day');
     this.authService.addJeUser(this.regiJe.value).subscribe(
       (data: any) => {
         // eslint-disable-next-line eqeqeq

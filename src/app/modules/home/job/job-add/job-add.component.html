@@ -57,8 +57,7 @@
 
     <div class="form-group col-md-3">
       <label for="example-text-input" class="col-form-label">Lương tối thiểu :</label>
-      <input class="form-control" type="number" formControlName="salaryMin"
-        placeholder="Nhập lương tối thiểu">
+      <input class="form-control" type="number" formControlName="salaryMin" placeholder="Nhập lương tối thiểu">
       <small class="col alert text-danger" role="alert"
         *ngIf="rfContact.get('salaryMin')?.errors?.required && rfContact.get('salaryMin')?.touched">
         Nhập lương tối thiểu là bắt buộc !
@@ -73,14 +72,13 @@
       </small>
       <small class="col alert text-danger" role="alert"
         *ngIf="rfContact.get('salaryMin')?.errors?.salaryMinMaxCustomValidator && (rfContact.get('salaryMin')?.dirty || rfContact.get('salaryMin')?.touched)">
-        Lương tối đa phải lơn hơn lương tối thiểu
+        Lương tối đa phải lơn hơn lương tối thiểu !
       </small>
     </div>
 
     <div class="form-group col-md-3">
       <label for="example-text-input" class="col-form-label">Lương tối đa :</label>
-      <input class="form-control" type="number" formControlName="salaryMax"
-        placeholder="Nhập lương tối đa">
+      <input class="form-control" type="number" formControlName="salaryMax" placeholder="Nhập lương tối đa">
       <small class="col alert text-danger" role="alert"
         *ngIf="rfContact.get('salaryMax')?.errors?.required && rfContact.get('salaryMax')?.touched">
         Nhập lương tối đa là bắt buộc !
@@ -92,6 +90,10 @@
       <small class="col alert text-danger" role="alert"
         *ngIf="rfContact.get('salaryMax')?.errors?.max && (rfContact.get('salaryMax')?.dirty || rfContact.get('salaryMax')?.touched)">
         Lương khổng được lon hơn 200 !
+      </small>
+      <small class="col alert text-danger" role="alert"
+        *ngIf="rfContact.get('salaryMin')?.errors?.salaryMinMaxCustomValidator && (rfContact.get('salaryMin')?.dirty || rfContact.get('salaryMin')?.touched)">
+        Lương tối đa phải lơn hơn lương tối thiểu !
       </small>
     </div>
 
