@@ -78,17 +78,20 @@ export class JobPublicDetailComponent implements OnInit {
     this.reasonDto= {jobId: 0, reason: '', statusId: 0};
     this.info = this.fb.group({
       description: [''],
-      homeTown: ['', [Validators.required]],
-      gender: ['', [Validators.required]],
-      birthDay: ['', [Validators.required]],
-      skills: this.fb.array([
-        this.fb.control(''),
-      ]),
-      numberYearsExperience: ['', [Validators.required]],
-      academicLevel: ['', [Validators.required]],
-      desiredSalary: ['', [Validators.required]],
-      desiredWorkingAddress: ['', [Validators.required]],
-      workingForm: ['', [Validators.required]],
+      // homeTown: ['', [Validators.required]],
+      // homeTown: [''],
+      // gender: ['', [Validators.required]],
+      // gender: [''],
+      // birthDay: ['', [Validators.required]],
+      // birthDay: [''],
+      // skills: this.fb.array([
+      //   this.fb.control(''),
+      // ]),
+      // numberYearsExperience: ['', [Validators.required]],
+      // academicLevel: ['', [Validators.required]],
+      // desiredSalary: ['', [Validators.required]],
+      // desiredWorkingAddress: ['', [Validators.required]],
+      // workingForm: ['', [Validators.required]],
     });
     this.connect();
   }
@@ -120,17 +123,17 @@ export class JobPublicDetailComponent implements OnInit {
     };
   }
   // eslint-disable-next-line @typescript-eslint/member-ordering
-  get skills(): FormArray {
-    return this.info.get('skills') as FormArray;
-  }
+  // get skills(): FormArray {
+  //   return this.info.get('skills') as FormArray;
+  // }
 
-  addSkill() {
-    this.skills.push(this.fb.control(''));
-  }
+  // addSkill() {
+  //   this.skills.push(this.fb.control(''));
+  // }
 
-  removeSkill(index: number) {
-    this.skills.removeAt(index);
-  }
+  // removeSkill(index: number) {
+  //   this.skills.removeAt(index);
+  // }
 
   public getJobById(): void {
     this.jobService.getJobById(this.route.snapshot.params.id).subscribe(
@@ -144,14 +147,14 @@ export class JobPublicDetailComponent implements OnInit {
   }
 
   checkApply(): boolean{
-    if (!this.userService.checkProfile(this.profile)) {
-      if(!this.info.valid){
-        return false;
-      }
-      if(!this.fileAvatar){
-        return false;
-      }
-    }
+    // if (!this.userService.checkProfile(this.profile)) {
+    //   if(!this.info.valid){
+    //     return false;
+    //   }
+    //   if(!this.fileAvatar){
+    //     return false;
+    //   }
+    // }
     if(!this.fileCv){
       return false;
     }
@@ -255,27 +258,27 @@ export class JobPublicDetailComponent implements OnInit {
 
   onApply() {
     if (!this.checkedProfile) {
-      let skills = '';
+      // let skills = '';
       // eslint-disable-next-line @typescript-eslint/prefer-for-of
-      for (let i = 0; i < this.info.value.skills.length; i++) {
-        if (i === this.info.value.skills.length - 1) {
-          skills += this.info.value.skills[i];
-        } else {
-          skills += this.info.value.skills[i] + ',';
-        }
-      }
-      this.user.avatarName = this.fileAvatar.name;
+      // for (let i = 0; i < this.info.value.skills.length; i++) {
+      //   if (i === this.info.value.skills.length - 1) {
+      //     skills += this.info.value.skills[i];
+      //   } else {
+      //     skills += this.info.value.skills[i] + ',';
+      //   }
+      // }
+      // this.user.avatarName = this.fileAvatar.name;
       this.user.homeTown = this.info.value.homeTown;
-      this.user.birthday = this.info.value.birthday;
-      this.profile.skill = skills;
-      this.profile.numberYearsExperience = this.info.value.numberYearsExperience;
-      this.profile.academicLevel = this.info.value.academicLevel;
-      this.profile.desiredSalary = this.info.value.desiredSalary;
-      this.profile.desiredWorkingAddress = this.info.value.desiredWorkingAddress;
-      this.profile.desiredWorkingForm = this.info.value.workingForm.code;
+      // this.user.birthday = this.info.value.birthday;
+      // this.profile.skill = skills;
+      // this.profile.numberYearsExperience = this.info.value.numberYearsExperience;
+      // this.profile.academicLevel = this.info.value.academicLevel;
+      // this.profile.desiredSalary = this.info.value.desiredSalary;
+      // this.profile.desiredWorkingAddress = this.info.value.desiredWorkingAddress;
+      // this.profile.desiredWorkingForm = this.info.value.workingForm.code;
       this.profile.user = this.user;
-      this.uploadAvatar();
-      this.updateUser();
+      // this.uploadAvatar();
+      // this.updateUser();
     }
     this.profile.description = this.info.value.description;
     this.uploadCv();

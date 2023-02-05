@@ -13,7 +13,7 @@
         Nhập tên công việc là bắt buộc !
       </div>
 
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label for="example-text-input" class="col-md-4 col-form-label">Ví trí công việc :</label>
         <div class="col-md-8">
           <select class="custom-select mb-3" formControlName="jobPositionId" [(ngModel)]="jobPosition.id">
@@ -23,11 +23,11 @@
             </option>
           </select>
         </div>
-      </div>
-      <div class="col alert alert-danger" role="alert"
+      </div> -->
+      <!-- <div class="col alert alert-danger" role="alert"
            *ngIf="rfContact.get('jobPositionId')?.errors?.required && rfContact.get('jobPositionId')?.touched">
         Chọn vị trí công việc là bắt buộc !
-      </div>
+      </div> -->
 
       <div class="form-group row">
         <label for="example-text-input" class="col-md-4 col-form-label">Kinh nghiệm :</label>
@@ -41,7 +41,7 @@
         Nhập kinh nghiệm là bắt buộc !
       </div>
 
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label for="example-text-input" class="col-md-4 col-form-label">Hình thức làm việc :</label>
         <div class="col-md-8">
           <select class="custom-select mb-3" formControlName="workingFormId" [(ngModel)]="workingForm.id">
@@ -55,7 +55,7 @@
       <div class="col alert alert-danger" role="alert"
            *ngIf="rfContact.get('workingFormId')?.errors?.required && rfContact.get('workingFormId')?.touched">
         Chọn hình thức công việc là bắt buộc !
-      </div>
+      </div> -->
 
       <div class="form-group row">
         <label for="example-text-input" class="col-md-4 col-form-label">Địa chỉ công việc :</label>
@@ -68,7 +68,7 @@
         Nhập địa chỉ công việc là bắt buộc !
       </div>
 
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label for="example-text-input" class="col-md-4 col-form-label">Trình độ học vấn :</label>
         <div class="col-md-8">
           <select class="custom-select mb-3" formControlName="academicLevelId" [(ngModel)]="academicLevel.id">
@@ -82,8 +82,8 @@
       <div class="col alert alert-danger" role="alert"
            *ngIf="rfContact.get('academicLevelId')?.errors?.required && rfContact.get('academicLevelId')?.touched">
         Chọn trình độ học vấn là bắt buộc !
-      </div>
-
+      </div> -->
+<!-- 
       <div class="form-group row">
         <label for="example-text-input" class="col-md-4 col-form-label">Level :</label>
         <div class="col-md-8">
@@ -94,11 +94,11 @@
             </option>
           </select>
         </div>
-      </div>
-      <div class="col alert alert-danger" role="alert"
+      </div> -->
+      <!-- <div class="col alert alert-danger" role="alert"
            *ngIf="rfContact.get('rankId')?.errors?.required && rfContact.get('rankId')?.touched">
         Trình độ học vấn là bắt buộc !
-      </div>
+      </div> -->
 
       <div class="form-group row">
         <label for="example-text-input" class="col-md-4 col-form-label">Số lượng cần tuyển :</label>
@@ -111,30 +111,30 @@
         Nhập số lượng cần tuyển là bắt buộc !
       </div>
 
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label for="example-text-input" class="col-md-4 col-form-label">Ngày bắt đâu tuyển :</label>
         <div class="col-md-8">
           <p-calendar [(ngModel)]="startRequirement"  [showIcon]="true" [minDate]="minDate" [showTime]="true"
                        inputId="time" formControlName="startRecruitmentDate" [placeholder]="placeholderS">
           </p-calendar>
         </div>
-      </div>
-      <div class="col alert alert-danger" role="alert"
+      </div> -->
+      <!-- <div class="col alert alert-danger" role="alert"
            *ngIf="rfContact.get('startRecruitmentDate')?.errors?.required && rfContact.get('startRecruitmentDate')?.touched">
         Chọn ngày bắt đâu tuyển dụng là bắt buộc !
-      </div>
+      </div> -->
 
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label for="example-text-input" class="col-md-4 col-form-label">Hạn nộp hồ sơ :</label>
         <div class="col-md-8">
           <p-calendar [(ngModel)]="dueDate" [showTime]="true" [showIcon]="true" inputId="time" [minDate]="minDate"
                       formControlName="dueDate"  [placeholder]="placeholderD"></p-calendar>
         </div>
-      </div>
-      <div class="col alert alert-danger" role="alert"
+      </div> -->
+      <!-- <div class="col alert alert-danger" role="alert"
            *ngIf="rfContact.get('dueDate')?.errors?.required && rfContact.get('dueDate')?.touched">
         Chọn hạn nộp hồ sơ là bắt buộc !
-      </div>
+      </div> -->
 
       <div class="form-group row">
         <label for="example-text-input" class="col-md-4 col-form-label">Mô tả công việc :</label>
@@ -197,7 +197,7 @@
       </div>
 
 
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label for="example-text-input" class="col-md-4 col-form-label">Người liên hệ :</label>
         <div class="col-md-8">
           <select class="custom-select mb-3" formControlName="contactId" [(ngModel)]="contact.id">
@@ -211,9 +211,9 @@
       <div class="col alert alert-danger" role="alert"
            *ngIf="rfContact.get('contactId')?.errors?.required && rfContact.get('contactId')?.touched">
         Chọn người liên hệ là bắt buộc !
-      </div>
+      </div> -->
 
-      <div formArrayName="skills" *ngIf="skills.controls.length">
+      <!-- <div formArrayName="skills" *ngIf="skills.controls.length">
         <div class="form-group row" *ngFor="let c of skills.controls; index as i">
           <label class="col-md-4 col-form-label">Skills:</label>
           <div class="col-md-8">
@@ -225,7 +225,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="form-group row">
         <div class="col-md-10 offset-md-2">
           <button class="btn btn-primary" type="submit" [disabled]=!this.rfContact.valid>Cập nhật</button>

@@ -1,8 +1,8 @@
-<div class="ml-3">
+<div class="ml-3" (click)="onReadDetail(job.id)">
   <div class="d-flex justify-content-lg-start container bg-info p-3 rounded mb-4 ml-5" >
-    <div class="ml-5">
+    <div class="ml-5" >
       <div class="d-flex justify-content-lg-between">
-        <a (click)="onReadDetail(job.id)" style="cursor: pointer;" class="display-5 font-weight-bold">
+        <a style="cursor: pointer;" class="display-5 font-weight-bold">
           {{job.name}}
         </a>
         <p class="badge badge-secondary mr-2">

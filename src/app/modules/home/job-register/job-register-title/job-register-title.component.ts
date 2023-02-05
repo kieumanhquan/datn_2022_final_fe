@@ -49,7 +49,7 @@ export class JobRegisterTitleComponent implements OnInit {
   }
 
   onReadJobDetail(id: number) {
-    this.router.navigate(['/home/job-detail', id]).then(r => console.log(r));
+    // this.router.navigate(['/home/job-detail', id]).then(r => console.log(r));
   }
 
   onDownloadCV(id: any) {

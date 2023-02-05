@@ -1,10 +1,10 @@
 <div class="ml-5">
-  <div class="d-flex justify-content-lg-start container bg-info p-3 rounded mb-4">
+  <div class="d-flex justify-content-lg-start container bg-info p-3 rounded mb-4" (click)="onReadDetail(jobRegister.id)">
     <p-avatar class="ml-2" [image]="this.avatar" size="xlarge"></p-avatar>
 
     <div class="ml-4">
       <div class="d-flex justify-content-lg-between">
-        <a (click)="onReadDetail(jobRegister.id)" style="cursor: pointer;" class="display-5 font-weight-bold mr-5">
+        <a style="cursor: pointer;" class="display-5 font-weight-bold mr-5">
           {{jobRegister.user.name}}
         </a>
 
@@ -52,7 +52,7 @@
     <div class="col-md-8">
       <div class="form-group row">
         <label class="col-md-4 col-form-label">Ngày hẹn phỏng vấn :</label>
-        <div class="col-md-10">
+        <div class="col-md-8">
           <p-calendar  [showTime]="true" [showIcon]="true" [minDate]="currentDate" inputId="time" formControlName="dateBook"></p-calendar>
         </div>
       </div>

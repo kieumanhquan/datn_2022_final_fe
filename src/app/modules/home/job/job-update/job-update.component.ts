@@ -57,21 +57,28 @@ export class JobUpdateComponent implements OnInit {
   ngOnInit() {
     this.rfContact = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
-      jobPositionId: ['', [Validators.required]],
+      // jobPositionId: ['', [Validators.required]],
+      jobPositionId: [''],
       numberExperience: ['', [Validators.required]],
-      workingFormId: ['', [Validators.required]],
+      // workingFormId: ['', [Validators.required]],
+      workingFormId: [''],
       addressWork: ['', [Validators.required, Validators.minLength(3)]],
-      academicLevelId: ['', [Validators.required]],
-      rankId: ['', [Validators.required]],
+      // academicLevelId: ['', [Validators.required]],
+      academicLevelId: [''],
+      // rankId: ['', [Validators.required]],
+      rankId: [''],
       qtyPerson: ['', [Validators.required]],
-      startRecruitmentDate: ['', [Validators.required]],
-      dueDate: ['', [Validators.required]],
+      // startRecruitmentDate: ['', [Validators.required]],
+      startRecruitmentDate: [''],
+      // dueDate: ['', [Validators.required]],
+      dueDate: [''],
       description: ['', [Validators.required, Validators.minLength(3)]],
       benefits: ['', [Validators.required, Validators.minLength(3)]],
       jobRequirement: ['', [Validators.required, Validators.minLength(3)]],
       salaryMin: ['', [Validators.required, Validators.minLength(0)]],
       salaryMax: ['', [Validators.required, Validators.minLength(1)]],
-      contactId: ['', [Validators.required]],
+      // contactId: ['', [Validators.required]],
+      contactId: [''],
       skills: this.fb.array([
       ]),
     });
@@ -228,7 +235,13 @@ export class JobUpdateComponent implements OnInit {
     this.jobDto.skills =skills;
     // eslint-disable-next-line @typescript-eslint/prefer-for-of
     this.jobDto.views =this.job.views;
-
+    this.jobDto.academicLevelId = this.job.academicLevel.id,
+    this.jobDto.jobPositionId = this.job.jobPosition.id,
+    this.jobDto.rankId = this.job.rank.id,
+    this.jobDto.workingFormId = this.job.rank.id,
+    this.jobDto.contactId = this.job.contact.id,
+    this.jobDto.startRecruitmentDate = this.job.startRecruitmentDate,
+    this.jobDto.dueDate = this.job.dueDate,
     console.log('UpdateJob',this.jobDto);
     // eslint-disable-next-line max-len
     this.jobService.updateJob(this.jobDto).subscribe(
